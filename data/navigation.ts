@@ -1,0 +1,10 @@
+export const navLinks = [
+  { label: "How We Work", href: "#how-we-work" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "Contact", href: "#contact" },
+];
+
+export const whatsappNumber = "";
+export const whatsappUrl = whatsappNumber
+  ? `https://wa.me/${whatsappNumber}`
+  : "#";

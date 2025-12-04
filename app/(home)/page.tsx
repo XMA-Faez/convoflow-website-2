@@ -1,0 +1,23 @@
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { HeroSection } from "./_components/hero/hero-section";
+import { ClientLogos } from "./_components/clients/client-logos";
+import { ProcessSection } from "./_components/process/process-section";
+import { TestimonialsSection } from "./_components/testimonials/testimonials-section";
+import { ContactSection } from "./_components/contact/contact-section";
+
+export default function Home() {
+  return (
+    <>
+      <Header />
+      <main>
+        <HeroSection />
+        <ClientLogos />
+        <ProcessSection />
+        <TestimonialsSection />
+        <ContactSection />
+      </main>
+      <Footer />
+    </>
+  );
+}
