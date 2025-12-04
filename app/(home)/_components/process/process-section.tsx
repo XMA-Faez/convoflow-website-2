@@ -9,8 +9,8 @@ export function ProcessSection() {
   const [activeStep, setActiveStep] = useState<number | null>(null);
 
   return (
-    <section id="how-we-work" className="relative min-h-screen py-24 px-4">
-      <div className="relative max-w-7xl mx-auto">
+    <section id="how-we-work" className="relative py-24 px-4 overflow-x-hidden">
+      <div className="relative max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,25 +32,25 @@ export function ProcessSection() {
         <div className="relative">
           <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-transparent via-primary-400 to-transparent hidden lg:block" />
 
-          <div className="space-y-12 lg:space-y-0">
+          <div className="space-y-4 lg:space-y-0">
             {processSteps.map((step, index) => {
               const Icon = step.icon;
 
               return (
                 <motion.div
                   key={step.number}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   className={`relative flex items-center ${
                     index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
                   }`}
                 >
-                  <div className="w-full lg:w-1/2 px-4 py-6">
+                  <div className="w-full lg:w-1/2 px-2 sm:px-4 py-2 lg:py-3">
                     <motion.div
                       onClick={() => setActiveStep(activeStep === index ? null : index)}
-                      className={`cursor-pointer relative p-8 rounded-3xl transition-all duration-300 bg-white border ${
+                      className={`cursor-pointer relative p-4 sm:p-6 rounded-2xl transition-all duration-300 bg-white border ${
                         activeStep === index
                           ? "border-primary-300 shadow-lg shadow-primary-200/50 bg-primary-50/50"
                           : "border-neutral-200 hover:border-primary-200 hover:shadow-md"
