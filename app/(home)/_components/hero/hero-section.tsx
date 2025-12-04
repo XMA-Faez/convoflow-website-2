@@ -19,8 +19,26 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-primary-50/50 to-background">
-      <Container>
+    <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-transparent">
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `
+              linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+              linear-gradient(to bottom, #f0f0f0 1px, transparent 1px),
+              radial-gradient(circle 600px at 0% 200px, oklch(0.816 0.112 356.06 / 0.3), transparent),
+              radial-gradient(circle 600px at 100% 200px, oklch(0.816 0.112 356.06 / 0.3), transparent)
+`,
+          backgroundSize: `
+              96px 64px,    
+              96px 64px,    
+              100% 100%,    
+              100% 100%  
+`,
+        }}
+      />
+
+      <Container className="relative z-10">
         <motion.div
           initial="hidden"
           animate="visible"

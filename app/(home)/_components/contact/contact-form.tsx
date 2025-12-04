@@ -192,7 +192,7 @@ export function ContactForm() {
               name="phone"
               type="tel"
               label="Phone Number"
-              placeholder="+1 (555) 000-0000"
+              placeholder="+971 50 123 4567"
               value={formData.phone}
               onChange={handleChange}
               error={errors.phone}

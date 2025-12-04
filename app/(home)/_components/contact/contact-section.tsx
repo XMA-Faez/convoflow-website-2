@@ -10,8 +10,26 @@ import { whatsappUrl } from "@/data/navigation";
 
 export function ContactSection() {
   return (
-    <Section id="contact" background="primary">
-      <Container size="narrow">
+    <Section id="contact" background="primary" className="relative">
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `
+              linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+              linear-gradient(to bottom, #f0f0f0 1px, transparent 1px),
+              radial-gradient(circle 600px at 0% 200px, oklch(0.816 0.112 356.06 / 0.2), transparent),
+              radial-gradient(circle 600px at 100% 200px, oklch(0.816 0.112 356.06 / 0.2), transparent)
+`,
+          backgroundSize: `
+              96px 64px,    
+              96px 64px,    
+              100% 100%,    
+              100% 100%  
+`,
+        }}
+      />
+
+      <Container size="narrow" className="z-10 relative">
         <motion.div
           initial="hidden"
           whileInView="visible"
