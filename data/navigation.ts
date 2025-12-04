@@ -17,3 +17,9 @@ export const contactInfo = {
     line2: "Dubai, UAE",
   },
 };
+
+export const socialLinks = {
+  instagram: "https://instagram.com/convoflow.ae",
+  linkedin: "https://linkedin.com/company/convoflow",
+  twitter: "https://twitter.com/convoflow",
+};
