@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState, RefObject } from "react";
+import { useEffect, useId, useState, useRef, RefObject } from "react";
 import { motion } from "framer-motion";
 
 interface AnimatedBeamProps {
@@ -14,6 +14,7 @@ interface AnimatedBeamProps {
   pathWidth?: number;
   gradientStartColor?: string;
   gradientStopColor?: string;
+  onReachEnd?: () => void;
 }
 
 export function AnimatedBeam({
@@ -27,6 +28,7 @@ export function AnimatedBeam({
   pathWidth = 2,
   gradientStartColor = "oklch(0.7 0.3 350)",
   gradientStopColor = "oklch(0.55 0.35 320)",
+  onReachEnd,
 }: AnimatedBeamProps) {
   const id = useId();
   const [pathD, setPathD] = useState("");
@@ -67,6 +69,25 @@ export function AnimatedBeam({
 
     return () => resizeObserver.disconnect();
   }, [containerRef, fromRef, toRef, curvature, isVertical]);
+
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (!onReachEnd) return;
+
+    const reachTime = (delay + duration) * 1000;
+    const cycleTime = duration * 1000;
+
+    const firstTimer = setTimeout(() => {
+      onReachEnd();
+      intervalRef.current = setInterval(onReachEnd, cycleTime);
+    }, reachTime);
+
+    return () => {
+      clearTimeout(firstTimer);
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [onReachEnd, delay, duration]);
 
   const getGradientAnimation = () => {
     if (isVertical) {

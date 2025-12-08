@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { slideInLeft, slideInRight, scaleIn } from "@/lib/animations";
 import { AnimatedBeam } from "./animated-beam";
@@ -13,15 +13,12 @@ import {
   WhatsAppIcon,
   LightningIcon,
 } from "./icons";
-import {
-  useGlowAnimation,
-  GLOW_STYLE_ACTIVE,
-  GLOW_STYLE_INACTIVE,
-} from "./use-glow-animation";
+import { GLOW_STYLE_ACTIVE, GLOW_STYLE_INACTIVE } from "./glow-styles";
 
 const BEAM_DURATION = 4;
 const INPUT_DELAYS = [0, 0.5, 1];
 const OUTPUT_DELAYS = [1.5, 2, 2.5];
+const GLOW_DURATION = 800;
 
 export function FlowDiagramDesktop() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -33,8 +30,13 @@ export function FlowDiagramDesktop() {
   const output2Ref = useRef<HTMLDivElement>(null);
   const output3Ref = useRef<HTMLDivElement>(null);
 
-  const isGlowing = useGlowAnimation(BEAM_DURATION, INPUT_DELAYS[2]);
+  const [isGlowing, setIsGlowing] = useState(false);
   const glowStyle = isGlowing ? GLOW_STYLE_ACTIVE : GLOW_STYLE_INACTIVE;
+
+  const handleMetaBeamReachEnd = useCallback(() => {
+    setIsGlowing(true);
+    setTimeout(() => setIsGlowing(false), GLOW_DURATION);
+  }, []);
 
   const inputNodes = [
     {
@@ -217,6 +219,7 @@ export function FlowDiagramDesktop() {
         curvature={70}
         duration={BEAM_DURATION}
         delay={INPUT_DELAYS[2]}
+        onReachEnd={handleMetaBeamReachEnd}
       />
 
       {/* BEAMS - Center to Output */}
