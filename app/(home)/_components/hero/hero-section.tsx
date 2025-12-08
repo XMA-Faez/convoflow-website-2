@@ -49,7 +49,8 @@ export function HeroSection() {
             variants={fadeInUp}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight"
           >
-            You&apos;re Chasing Leads Instead of Closing Them.
+            You&apos;re Chasing Leads Instead of{" "}
+            <span className="text-primary-500">Closing</span> Them.
           </motion.h1>
 
           <motion.p

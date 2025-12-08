@@ -13,7 +13,7 @@ export const contactInfo = {
   phone: "055 496 0783",
   email: "info@convoflow.ae",
   address: {
-    line1: "JBC 2 - Jumeirah Lake Towers",
+    line1: "Jumeirah Lake Towers",
     line2: "Dubai, UAE",
   },
 };

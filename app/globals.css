@@ -78,6 +78,10 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+a {
+  cursor: pointer;
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0);

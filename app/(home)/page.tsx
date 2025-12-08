@@ -5,6 +5,7 @@ import { ClientLogos } from "./_components/clients/client-logos";
 import { ProcessSection } from "./_components/process/process-section";
 import { TestimonialsSection } from "./_components/testimonials/testimonials-section";
 import { ContactSection } from "./_components/contact/contact-section";
+import { SignupPopup } from "@/components/signup-popup";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
+      <SignupPopup />
     </>
   );
 }

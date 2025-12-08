@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/primitives";
+import { Link } from "@/components/primitives";
 import { Container } from "./container";
 import { navLinks } from "@/data/navigation";
 import Image from "next/image";
@@ -46,7 +46,7 @@ export function Header() {
     >
       <Container>
         <nav className="flex items-center justify-between h-20">
-          <a
+          <Link
             href="#"
             onClick={(e) => {
               e.preventDefault();
@@ -61,27 +61,35 @@ export function Header() {
               height={48}
               className="h-12 w-auto object-contain"
             />
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <button
+              <Link
                 key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="text-neutral-700 hover:text-primary-600 font-medium transition-colors"
+                href={link.href}
+                variant="nav"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(link.href);
+                }}
               >
                 {link.label}
-              </button>
+              </Link>
             ))}
           </div>
 
           <div className="hidden md:block">
-            <Button
-              size="sm"
-              onClick={() => scrollToSection("#contact")}
+            <Link
+              href="#contact"
+              className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("#contact");
+              }}
             >
               Book a 30 Min Audit Call
-            </Button>
+            </Link>
           </div>
 
           <button
@@ -127,20 +135,29 @@ export function Header() {
             <Container>
               <div className="py-4 space-y-4">
                 {navLinks.map((link) => (
-                  <button
+                  <Link
                     key={link.href}
-                    onClick={() => scrollToSection(link.href)}
-                    className="block w-full text-left py-2 text-neutral-700 hover:text-primary-600 font-medium transition-colors"
+                    href={link.href}
+                    variant="nav"
+                    className="block w-full py-2"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(link.href);
+                    }}
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 ))}
-                <Button
-                  fullWidth
-                  onClick={() => scrollToSection("#contact")}
+                <Link
+                  href="#contact"
+                  className="block w-full text-center px-4 py-3 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection("#contact");
+                  }}
                 >
                   Book a 30 Min Audit Call
-                </Button>
+                </Link>
               </div>
             </Container>
           </motion.div>

@@ -5,11 +5,47 @@ import { useState } from "react";
 import Link from "next/link";
 import { processSteps } from "@/data/process-steps";
 
+const GRADIENT_VARIANT = 1 as 1 | 2 | 3;
+
+function DotGridBackground() {
+  const gradients = {
+    1: `
+      radial-gradient(ellipse 80% 50% at 50% 0%, oklch(0.85 0.05 330 / 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 50% 100%, oklch(0.85 0.05 60 / 0.1), transparent)
+    `,
+    2: `
+      radial-gradient(ellipse 60% 50% at 0% 30%, oklch(0.85 0.06 330 / 0.12), transparent),
+      radial-gradient(ellipse 60% 50% at 100% 70%, oklch(0.85 0.06 330 / 0.12), transparent)
+    `,
+    3: `
+      radial-gradient(ellipse 100% 40% at 50% 50%, oklch(0.9 0.04 60 / 0.2), transparent),
+      linear-gradient(180deg, oklch(0.97 0.01 330 / 0.3) 0%, transparent 20%, transparent 80%, oklch(0.97 0.01 330 / 0.3) 100%)
+    `,
+  };
+
+  return (
+    <div className="absolute inset-0 z-0">
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `radial-gradient(circle, oklch(0.7 0.01 0 / 0.4) 1px, transparent 1px)`,
+          backgroundSize: "32px 32px",
+        }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{ background: gradients[GRADIENT_VARIANT] }}
+      />
+    </div>
+  );
+}
+
 export function ProcessSection() {
   const [activeStep, setActiveStep] = useState<number | null>(null);
 
   return (
     <section id="how-we-work" className="relative py-24 px-4 overflow-x-hidden">
+      <DotGridBackground />
       <div className="relative max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
