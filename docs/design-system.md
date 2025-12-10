@@ -59,10 +59,43 @@ Using Tailwind's default spacing scale. Section padding:
 
 All primitive components use `class-variance-authority` (CVA) for type-safe variants.
 
-### Button Variants
-- `primary`: Solid coral background
-- `secondary`: Outlined coral border
-- `ghost`: Transparent with hover state
+### Button & ButtonLink
+
+Two components share the same styling variants:
+- `Button`: For `<button>` elements (forms, actions)
+- `ButtonLink`: For `<a>` elements styled as buttons (navigation)
+
+**Intent Variants**
+| Variant | Usage |
+|---------|-------|
+| `primary` | Solid coral background (default) |
+| `secondary` | Outlined coral border |
+| `ghost` | Transparent with hover state |
+
+**Size Variants**
+| Size | Padding | Font | Radius (default) |
+|------|---------|------|------------------|
+| `sm` | `px-4 py-2` | `text-sm` | `rounded-lg` |
+| `md` | `px-6 py-3` | `text-base` | `rounded-xl` |
+| `lg` | `px-8 py-4` | `text-lg` | `rounded-2xl` |
+
+**Rounded Variants**
+| Variant | Usage |
+|---------|-------|
+| `default` | Size-appropriate border radius |
+| `pill` | Fully rounded (`rounded-full`) |
+
+**Additional Props**
+- `fullWidth`: Makes button span full container width
+
+**Usage Examples**
+```tsx
+import { Button, ButtonLink } from "@/components/primitives";
+
+<Button intent="primary" size="md">Submit</Button>
+<Button intent="secondary" size="sm">Cancel</Button>
+<ButtonLink href="/about" size="lg" rounded="pill">Learn More</ButtonLink>
+```
 
 ### Input States
 - `default`: Standard neutral border

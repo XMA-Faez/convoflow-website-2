@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Link } from "@/components/primitives";
+import { Link, ButtonLink } from "@/components/primitives";
 import { Container } from "./container";
 import { navLinks } from "@/data/navigation";
 import Image from "next/image";
@@ -80,16 +80,16 @@ export function Header() {
           </div>
 
           <div className="hidden md:block">
-            <Link
+            <ButtonLink
               href="#contact"
-              className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors"
+              size="sm"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection("#contact");
               }}
             >
               Book a 30 Min Audit Call
-            </Link>
+            </ButtonLink>
           </div>
 
           <button
@@ -148,16 +148,17 @@ export function Header() {
                     {link.label}
                   </Link>
                 ))}
-                <Link
+                <ButtonLink
                   href="#contact"
-                  className="block w-full text-center px-4 py-3 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors"
+                  size="sm"
+                  fullWidth
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection("#contact");
                   }}
                 >
                   Book a 30 Min Audit Call
-                </Link>
+                </ButtonLink>
               </div>
             </Container>
           </motion.div>

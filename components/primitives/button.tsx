@@ -14,18 +14,28 @@ const buttonVariants = cva(
         ghost: "bg-transparent text-primary-600 hover:bg-primary-50",
       },
       size: {
-        sm: "text-sm px-4 py-2 rounded-lg",
-        md: "text-base px-6 py-3 rounded-xl",
-        lg: "text-lg px-8 py-4 rounded-2xl",
+        sm: "text-sm px-4 py-2",
+        md: "text-base px-6 py-3",
+        lg: "text-lg px-8 py-4",
+      },
+      rounded: {
+        default: "",
+        pill: "rounded-full",
       },
       fullWidth: {
         true: "w-full",
         false: "",
       },
     },
+    compoundVariants: [
+      { size: "sm", rounded: "default", className: "rounded-lg" },
+      { size: "md", rounded: "default", className: "rounded-xl" },
+      { size: "lg", rounded: "default", className: "rounded-2xl" },
+    ],
     defaultVariants: {
       intent: "primary",
       size: "md",
+      rounded: "default",
       fullWidth: false,
     },
   }
@@ -36,11 +46,11 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {}
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, intent, size, fullWidth, ...props }, ref) => {
+  ({ className, intent, size, rounded, fullWidth, ...props }, ref) => {
     return (
       <button
         ref={ref}
-        className={cn(buttonVariants({ intent, size, fullWidth }), className)}
+        className={cn(buttonVariants({ intent, size, rounded, fullWidth }), className)}
         {...props}
       />
     );

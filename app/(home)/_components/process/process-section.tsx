@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import Link from "next/link";
+import { ButtonLink } from "@/components/primitives";
 import { processSteps } from "@/data/process-steps";
 
 const GRADIENT_VARIANT = 1 as 1 | 2 | 3;
@@ -173,12 +173,9 @@ export function ProcessSection() {
           <p className="text-lg text-neutral-600 mb-6">
             Ready to start your journey with us?
           </p>
-          <Link
-            href="#contact"
-            className="inline-flex items-center px-8 py-4 bg-primary-600 text-white font-semibold rounded-full hover:bg-primary-700 transition-colors duration-300"
-          >
+          <ButtonLink href="#contact" size="lg" rounded="pill">
             Book Your Demo Now
-          </Link>
+          </ButtonLink>
         </motion.div>
       </div>
     </section>
