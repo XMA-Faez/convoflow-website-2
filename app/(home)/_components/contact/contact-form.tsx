@@ -22,6 +22,9 @@ interface FormErrors {
   communicationMode?: string;
 }
 
+const WEBHOOK_URL =
+  "https://services.leadconnectorhq.com/hooks/NiZDx1EdWj2vIGRJkg5Z/webhook-trigger/17746e45-e7dd-404d-acae-ec4d71d6f70c";
+
 function PhoneIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg
@@ -55,6 +58,7 @@ export function ContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [countdown, setCountdown] = useState(60);
 
   const validatePhone = (phone: string) => {
@@ -108,12 +112,33 @@ export function ContactForm() {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          phone: formData.phone,
+          communicationMode: formData.communicationMode,
+        }),
+      });
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    setCountdown(60);
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      setIsSuccess(true);
+      setCountdown(60);
+    } catch {
+      setSubmitError("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   useEffect(() => {
@@ -134,6 +159,7 @@ export function ContactForm() {
 
   const handleReset = () => {
     setIsSuccess(false);
+    setSubmitError(null);
     setFormData({
       firstName: "",
       lastName: "",
@@ -318,6 +344,15 @@ export function ContactForm() {
               </span>
             )}
           </motion.div>
+
+          {submitError && (
+            <motion.div
+              variants={fadeInUp}
+              className="p-3 rounded-lg bg-error-50 border border-error-100"
+            >
+              <p className="text-sm text-error-600 text-center">{submitError}</p>
+            </motion.div>
+          )}
 
           <motion.div variants={fadeInUp}>
             <Button
