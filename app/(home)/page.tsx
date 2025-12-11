@@ -1,3 +1,10 @@
+import { MaintenancePage } from "./_components/maintenance/maintenance-page";
+
+export default function Home() {
+  return <MaintenancePage />;
+}
+
+/* ORIGINAL IMPLEMENTATION - COMMENTED OUT FOR MAINTENANCE
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { HeroSection } from "./_components/hero/hero-section";
@@ -19,7 +26,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
-      {/* <SignupPopup /> */}
     </>
   );
 }
+*/
