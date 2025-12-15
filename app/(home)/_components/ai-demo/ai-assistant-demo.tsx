@@ -226,7 +226,7 @@ export function AIAssistantDemo() {
 
   return (
     <div className="w-full h-screen bg-white border border-neutral-200 flex flex-col overflow-hidden rounded-xl">
-      <div className="bg-gradient-to-r from-primary-500 to-primary-600 text-white p-3 sm:p-4">
+      <div className="bg-linear-to-r from-primary-500 to-primary-600 text-white p-3 sm:p-4">
         <div className="flex items-center gap-2 sm:gap-3">
           <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary-100 text-white flex items-center justify-center">
             <Image
