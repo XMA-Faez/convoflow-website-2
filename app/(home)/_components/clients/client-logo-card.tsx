@@ -35,7 +35,8 @@ export function MarqueeLogoCard({ client }: MarqueeLogoCardProps) {
       className="group flex-shrink-0 mx-3 sm:mx-4 w-36 sm:w-44 h-20 sm:h-24 bg-white rounded-xl border border-neutral-200
                  flex items-center justify-center px-4 py-3
                  hover:border-primary-300 hover:shadow-lg
-                 transition-[border-color,box-shadow] duration-300"
+                 transition-[border-color,box-shadow] duration-300
+"
       aria-label={`Visit ${client.name} website`}
     >
       {!imageError ? (
