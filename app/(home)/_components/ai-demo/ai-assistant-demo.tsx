@@ -244,10 +244,14 @@ export function AIAssistantDemo() {
             />
           </div>
           <div>
-            <h2 className="text-base sm:text-lg font-semibold">BookedByAI</h2>
+            <h2 className="text-base sm:text-lg font-semibold text-neutral-900">
+              BookedByAI
+            </h2>
             <div className="flex items-center gap-1.5 sm:gap-2 text-primary-100">
               <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-400 rounded-full animate-pulse" />
-              <span className="text-xs sm:text-sm">Active 24/7</span>
+              <span className="text-xs sm:text-sm text-neutral-500">
+                Active 24/7
+              </span>
             </div>
           </div>
         </div>
