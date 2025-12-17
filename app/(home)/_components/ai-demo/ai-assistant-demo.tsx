@@ -350,7 +350,7 @@ export function AIAssistantDemo() {
               className="inline-flex items-center gap-3 px-8 py-4 bg-primary-500 text-white font-semibold rounded-xl shadow-lg hover:bg-primary-600 transition-colors text-base sm:text-lg"
             >
               <Play className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" />
-              Try It Now
+              Watch the Demo
             </motion.button>
           </motion.div>
         ) : (
