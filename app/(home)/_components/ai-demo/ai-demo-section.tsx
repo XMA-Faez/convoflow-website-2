@@ -54,7 +54,7 @@ export function AIDemoSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
           viewport={{ once: true }}
-          className="shadow-xl shadow-neutral-200/50"
+          className=""
         >
           <AIAssistantDemo />
         </motion.div>
