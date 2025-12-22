@@ -49,18 +49,16 @@ export function HeroSection() {
             variants={fadeInUp}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight"
           >
-            You&apos;re Chasing Leads Instead of{" "}
-            <span className="text-primary-500">Closing</span> Them.
+            Turn Leads Into Booked Calls Without Lifting a Finger
           </motion.h1>
 
           <motion.p
             variants={fadeInUp}
             className="mt-6 text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto"
           >
-            The BookedByAI Growth Engine builds and runs your entire acquisition
-            system, engineered to double the number of qualified conversations
-            you get from the leads you already generate — without increasing ad
-            spend.
+            We build and run your entire acquisition system to double qualified
+            conversations from leads you already generate without increasing
+            ad spend.
           </motion.p>
 
           <motion.div variants={fadeInUp} className="mt-12">

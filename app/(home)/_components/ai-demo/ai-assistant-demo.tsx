@@ -41,7 +41,7 @@ const mockConversations: Array<{
   },
   {
     user: "Yes, I'd love to try it!",
-    ai: "Great! Can I have your phone number? Sarah will call you in under 60 seconds so you can experience it firsthand.",
+    ai: "Great! Can I have your name and phone number? Sarah will call you in under 60 seconds so you can experience it firsthand.",
     actions: [],
     showPhoneInput: true,
   },
@@ -167,12 +167,15 @@ export function AIAssistantDemo() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
   const [showPhoneInput, setShowPhoneInput] = useState(false);
+  const [firstName, setFirstName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [phoneError, setPhoneError] = useState("");
+  const [nameError, setNameError] = useState("");
   const [countdown, setCountdown] = useState(60);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const nameInputRef = useRef<HTMLInputElement>(null);
   const phoneInputRef = useRef<HTMLInputElement>(null);
 
   const validatePhone = (phone: string) => {
@@ -181,17 +184,28 @@ export function AIAssistantDemo() {
   };
 
   const handlePhoneSubmit = async () => {
-    if (!phoneNumber.trim()) {
-      setPhoneError("Please enter your phone number");
-      return;
-    }
-    if (!validatePhone(phoneNumber)) {
-      setPhoneError("Please enter a valid phone number");
-      return;
+    let hasError = false;
+
+    if (!firstName.trim()) {
+      setNameError("Please enter your name");
+      hasError = true;
+    } else {
+      setNameError("");
     }
 
+    if (!phoneNumber.trim()) {
+      setPhoneError("Please enter your phone number");
+      hasError = true;
+    } else if (!validatePhone(phoneNumber)) {
+      setPhoneError("Please enter a valid phone number");
+      hasError = true;
+    } else {
+      setPhoneError("");
+    }
+
+    if (hasError) return;
+
     setIsSubmitting(true);
-    setPhoneError("");
 
     try {
       const response = await fetch(WEBHOOK_URL, {
@@ -200,6 +214,7 @@ export function AIAssistantDemo() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          firstName: firstName,
           phone: phoneNumber,
           communicationMode: "call",
           source: "ai-demo",
@@ -240,8 +255,10 @@ export function AIAssistantDemo() {
     setMessages([]);
     setCurrentStep(0);
     setShowPhoneInput(false);
+    setFirstName("");
     setPhoneNumber("");
     setIsSuccess(false);
+    setNameError("");
     setPhoneError("");
     setCountdown(60);
   };
@@ -311,7 +328,7 @@ export function AIAssistantDemo() {
           if (conversation.showPhoneInput) {
             setTimeout(() => {
               setShowPhoneInput(true);
-              setTimeout(() => phoneInputRef.current?.focus(), 100);
+              setTimeout(() => nameInputRef.current?.focus(), 100);
             }, 500);
           }
 
@@ -419,7 +436,7 @@ export function AIAssistantDemo() {
                         </div>
                         <div>
                           <h4 className="text-sm sm:text-base font-semibold text-neutral-900">
-                            Enter your phone number
+                            Enter your details
                           </h4>
                           <p className="text-xs text-neutral-500">
                             Sarah will call you in under 60 seconds
@@ -428,6 +445,30 @@ export function AIAssistantDemo() {
                       </div>
 
                       <div className="space-y-3">
+                        <div>
+                          <input
+                            ref={nameInputRef}
+                            type="text"
+                            value={firstName}
+                            onChange={(e) => {
+                              setFirstName(e.target.value);
+                              if (nameError) setNameError("");
+                            }}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") phoneInputRef.current?.focus();
+                            }}
+                            placeholder="Your name"
+                            disabled={isSubmitting}
+                            className={`w-full px-4 py-3 text-base rounded-xl border-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 ${
+                              nameError
+                                ? "border-error-600 focus:ring-error-100"
+                                : "border-neutral-200 focus:border-primary-400 focus:ring-primary-200"
+                            }`}
+                          />
+                          {nameError && (
+                            <p className="text-xs text-error-600 mt-1">{nameError}</p>
+                          )}
+                        </div>
                         <div>
                           <input
                             ref={phoneInputRef}
