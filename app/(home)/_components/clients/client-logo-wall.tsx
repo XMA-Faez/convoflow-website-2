@@ -35,7 +35,7 @@ export function ClientLogoWall() {
             variants={fadeInUp}
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900"
           >
-            Industry Leaders Choose Us
+            Industry Leaders
           </motion.h2>
           <motion.p
             variants={fadeInUp}

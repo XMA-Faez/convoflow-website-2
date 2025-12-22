@@ -168,14 +168,14 @@ const ROICalculator: React.FC = () => {
 
   const inputFields = [
     {
-      label: "WhatsApp Leads per Month",
+      label: "Leads per Month",
       field: "currentLeads" as keyof ROIMetrics,
       min: 5,
       max: 500,
       step: 5,
       suffix: "leads",
       icon: <Users className="w-4 h-4" />,
-      tooltip: "Average number of WhatsApp inquiries you receive monthly",
+      tooltip: "Average number of leads you receive monthly",
     },
     {
       label: "Current Conversion Rate",
@@ -205,7 +205,7 @@ const ROICalculator: React.FC = () => {
       step: 0.5,
       suffix: "hours",
       icon: <MessageCircle className="w-4 h-4" />,
-      tooltip: "How long it takes to respond to WhatsApp messages",
+      tooltip: "How long it takes to respond to new leads",
     },
   ];
 
@@ -230,7 +230,7 @@ const ROICalculator: React.FC = () => {
             variants={fadeInUp}
             className="text-lg text-neutral-600 max-w-2xl mx-auto"
           >
-            See exactly how much additional revenue our CRM could generate for
+            See exactly how much additional revenue our system could generate for
             your UAE business
           </motion.p>
         </motion.div>
@@ -360,7 +360,16 @@ const ROICalculator: React.FC = () => {
                       );
                     }
 
+                    .roi-slider::-webkit-slider-runnable-track {
+                      background: transparent;
+                    }
+
+                    .roi-slider::-moz-range-track {
+                      background: transparent;
+                    }
+
                     .slider::-webkit-slider-thumb {
+                      -webkit-appearance: none;
                       appearance: none;
                       height: 18px;
                       width: 18px;
@@ -506,7 +515,7 @@ const ROICalculator: React.FC = () => {
                         </div>
                         <div className="flex justify-between items-center">
                           <span className="text-neutral-500">
-                            With Our CRM
+                            With Our System
                           </span>
                           <span className="font-semibold text-primary-500">
                             {formatCurrency(results.improvedRevenue)}
