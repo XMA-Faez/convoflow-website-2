@@ -2,8 +2,15 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { User, Zap, Phone, Play, X } from "lucide-react";
+import { User, Zap, Phone, Play, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import {
+  countryCodes,
+  defaultCountry,
+  validatePhoneWithMessage,
+  stripLeadingZero,
+  type CountryCode,
+} from "@/data/country-codes";
 
 interface ChatMessage {
   id: string;
@@ -169,6 +176,8 @@ export function AIAssistantDemo() {
   const [showPhoneInput, setShowPhoneInput] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState<CountryCode>(defaultCountry);
+  const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [phoneError, setPhoneError] = useState("");
@@ -177,10 +186,15 @@ export function AIAssistantDemo() {
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const nameInputRef = useRef<HTMLInputElement>(null);
   const phoneInputRef = useRef<HTMLInputElement>(null);
+  const countryDropdownRef = useRef<HTMLDivElement>(null);
 
   const validatePhone = (phone: string) => {
-    const phoneRegex = /^[\d\s\-+()]{8,}$/;
-    return phoneRegex.test(phone);
+    return validatePhoneWithMessage(phone, selectedCountry);
+  };
+
+  const getFullPhoneNumber = () => {
+    const normalized = stripLeadingZero(phoneNumber);
+    return normalized ? `${selectedCountry.dialCode}${normalized}` : "";
   };
 
   const handlePhoneSubmit = async () => {
@@ -193,11 +207,12 @@ export function AIAssistantDemo() {
       setNameError("");
     }
 
+    const phoneValidation = validatePhone(phoneNumber);
     if (!phoneNumber.trim()) {
       setPhoneError("Please enter your phone number");
       hasError = true;
-    } else if (!validatePhone(phoneNumber)) {
-      setPhoneError("Please enter a valid phone number");
+    } else if (!phoneValidation.isValid) {
+      setPhoneError(phoneValidation.error || "Please enter a valid phone number");
       hasError = true;
     } else {
       setPhoneError("");
@@ -215,7 +230,7 @@ export function AIAssistantDemo() {
         },
         body: JSON.stringify({
           firstName: firstName,
-          phone: phoneNumber,
+          phone: getFullPhoneNumber(),
           communicationMode: "call",
           source: "ai-demo",
         }),
@@ -250,6 +265,17 @@ export function AIAssistantDemo() {
     return () => clearInterval(countdownInterval);
   }, [isSuccess]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (countryDropdownRef.current && !countryDropdownRef.current.contains(event.target as Node)) {
+        setIsCountryDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const resetDemo = () => {
     setIsChatOpen(false);
     setMessages([]);
@@ -257,6 +283,8 @@ export function AIAssistantDemo() {
     setShowPhoneInput(false);
     setFirstName("");
     setPhoneNumber("");
+    setSelectedCountry(defaultCountry);
+    setIsCountryDropdownOpen(false);
     setIsSuccess(false);
     setNameError("");
     setPhoneError("");
@@ -469,26 +497,68 @@ export function AIAssistantDemo() {
                             <p className="text-xs text-error-600 mt-1">{nameError}</p>
                           )}
                         </div>
-                        <div>
-                          <input
-                            ref={phoneInputRef}
-                            type="tel"
-                            value={phoneNumber}
-                            onChange={(e) => {
-                              setPhoneNumber(e.target.value);
-                              if (phoneError) setPhoneError("");
-                            }}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") handlePhoneSubmit();
-                            }}
-                            placeholder="+971 50 123 4567"
-                            disabled={isSubmitting}
-                            className={`w-full px-4 py-3 text-base rounded-xl border-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 ${
+                        <div ref={countryDropdownRef} className="relative">
+                          <div
+                            className={`flex items-stretch rounded-xl border-2 transition-all duration-200 focus-within:ring-2 focus-within:ring-offset-1 ${
                               phoneError
-                                ? "border-error-600 focus:ring-error-100"
-                                : "border-neutral-200 focus:border-primary-400 focus:ring-primary-200"
+                                ? "border-error-600 focus-within:ring-error-100"
+                                : "border-neutral-200 focus-within:border-primary-400 focus-within:ring-primary-200"
                             }`}
-                          />
+                          >
+                            <button
+                              type="button"
+                              onClick={() => !isSubmitting && setIsCountryDropdownOpen(!isCountryDropdownOpen)}
+                              disabled={isSubmitting}
+                              className="flex items-center gap-1 px-3 py-3 border-r border-neutral-200 bg-neutral-50 rounded-l-xl hover:bg-neutral-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                              <span className="text-base leading-none">{selectedCountry.flag}</span>
+                              <span className="text-sm font-medium text-neutral-700">{selectedCountry.dialCode}</span>
+                              <ChevronDown
+                                className={`w-3 h-3 text-neutral-500 transition-transform ${
+                                  isCountryDropdownOpen ? "rotate-180" : ""
+                                }`}
+                              />
+                            </button>
+                            <input
+                              ref={phoneInputRef}
+                              type="tel"
+                              value={phoneNumber}
+                              onChange={(e) => {
+                                const digitsOnly = e.target.value.replace(/\D/g, "");
+                                setPhoneNumber(digitsOnly);
+                                if (phoneError) setPhoneError("");
+                              }}
+                              onKeyDown={(e) => {
+                                if (e.key === "Enter") handlePhoneSubmit();
+                                if (e.key === "Escape") setIsCountryDropdownOpen(false);
+                              }}
+                              placeholder="50 123 4567"
+                              disabled={isSubmitting}
+                              className="flex-1 px-3 py-3 bg-transparent border-none outline-none text-neutral-900 placeholder:text-neutral-400 disabled:opacity-50 disabled:cursor-not-allowed rounded-r-xl"
+                            />
+                          </div>
+                          {isCountryDropdownOpen && (
+                            <div className="absolute left-0 right-0 mt-1 bg-white border border-neutral-200 rounded-xl shadow-lg z-50 max-h-48 overflow-y-auto">
+                              {countryCodes.map((country) => (
+                                <button
+                                  key={country.iso}
+                                  type="button"
+                                  onClick={() => {
+                                    setSelectedCountry(country);
+                                    setIsCountryDropdownOpen(false);
+                                    phoneInputRef.current?.focus();
+                                  }}
+                                  className={`w-full flex items-center gap-2 px-3 py-2 hover:bg-neutral-50 transition-colors text-left ${
+                                    country.iso === selectedCountry.iso ? "bg-primary-50" : ""
+                                  }`}
+                                >
+                                  <span className="text-base">{country.flag}</span>
+                                  <span className="flex-1 text-sm text-neutral-900 truncate">{country.name}</span>
+                                  <span className="text-xs text-neutral-500">{country.dialCode}</span>
+                                </button>
+                              ))}
+                            </div>
+                          )}
                           {phoneError && (
                             <p className="text-xs text-error-600 mt-1">{phoneError}</p>
                           )}
