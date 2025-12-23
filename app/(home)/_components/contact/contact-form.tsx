@@ -2,7 +2,7 @@
 
 import { useState, useEffect, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button, Input } from "@/components/primitives";
+import { Button, Input, PhoneInput } from "@/components/primitives";
 import { fadeInUp } from "@/lib/animations";
 
 interface FormData {
@@ -35,11 +35,8 @@ export function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [countdown, setCountdown] = useState(60);
-
-  const validatePhone = (phone: string) => {
-    const phoneRegex = /^[\d\s\-+()]{8,}$/;
-    return phoneRegex.test(phone);
-  };
+  const [isPhoneValid, setIsPhoneValid] = useState(false);
+  const [phoneValidationError, setPhoneValidationError] = useState<string>();
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -54,8 +51,8 @@ export function ContactForm() {
 
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required";
-    } else if (!validatePhone(formData.phone)) {
-      newErrors.phone = "Please enter a valid phone number";
+    } else if (!isPhoneValid) {
+      newErrors.phone = phoneValidationError || "Please enter a valid phone number";
     }
 
     setErrors(newErrors);
@@ -66,6 +63,15 @@ export function ContactForm() {
     setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
+    }
+  };
+
+  const handlePhoneChange = (fullNumber: string, isValid: boolean, validationError?: string) => {
+    setFormData((prev) => ({ ...prev, phone: fullNumber }));
+    setIsPhoneValid(isValid);
+    setPhoneValidationError(validationError);
+    if (errors.phone) {
+      setErrors((prev) => ({ ...prev, phone: undefined }));
     }
   };
 
@@ -131,6 +137,8 @@ export function ContactForm() {
       phone: "",
       language: "en",
     });
+    setIsPhoneValid(false);
+    setPhoneValidationError(undefined);
     setCountdown(60);
   };
 
@@ -252,13 +260,10 @@ export function ContactForm() {
           </div>
 
           <motion.div variants={fadeInUp}>
-            <Input
+            <PhoneInput
               name="phone"
-              type="tel"
               label="Phone Number"
-              placeholder="+971 50 123 4567"
-              value={formData.phone}
-              onChange={(e) => handleInputChange("phone", e.target.value)}
+              onChange={handlePhoneChange}
               error={errors.phone}
               disabled={isSubmitting}
               required
