@@ -81,14 +81,21 @@ export const testimonialsQuery = groq`{
   }
 }`;
 
-export const clientsQuery = groq`*[_type == "clientLogo"] | order(order asc){
-  "id": _id,
-  name,
-  industry,
-  website,
-  logo,
-  logoUrl,
-  featured
+export const clientsQuery = groq`{
+  "section": *[_type == "clientSection"][0]{
+    sectionLabel,
+    title,
+    description
+  },
+  "items": *[_type == "clientLogo"] | order(order asc){
+    "id": _id,
+    name,
+    industry,
+    website,
+    logo,
+    logoUrl,
+    featured
+  }
 }`;
 
 export const navigationQuery = groq`*[_type == "navigation"][0]{

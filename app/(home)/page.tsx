@@ -17,7 +17,7 @@ export default async function Home() {
       <main>
         <HeroSection content={content.hero} whatsappNumber={content.navigation?.whatsappNumber} />
         <AIDemoSection content={content.aiDemo} />
-        <ClientLogoWall clients={content.clients} />
+        <ClientLogoWall content={content.clients} />
         <ProcessSection content={content.process} />
         <LeadCostCalculator content={content.calculator} />
         <ContactSection content={content.contact} whatsappNumber={content.navigation?.whatsappNumber} />

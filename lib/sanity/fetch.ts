@@ -17,7 +17,7 @@ import type {
   CalculatorContent,
   ContactContent,
   TestimonialsContent,
-  ClientItem,
+  ClientsContent,
   NavigationContent,
   LayoutContent,
   SiteContent,
@@ -61,7 +61,7 @@ export async function getTestimonialsContent(): Promise<TestimonialsContent> {
   return fetchWithFallback(testimonialsQuery, fallbackContent.testimonials);
 }
 
-export async function getClientsContent(): Promise<ClientItem[]> {
+export async function getClientsContent(): Promise<ClientsContent> {
   return fetchWithFallback(clientsQuery, fallbackContent.clients);
 }
 

@@ -62,3 +62,35 @@ export const clientLogo = defineType({
     },
   ],
 });
+
+export const clientSection = defineType({
+  name: "clientSection",
+  title: "Clients Section",
+  type: "document",
+  fields: [
+    defineField({
+      name: "sectionLabel",
+      title: "Section Label",
+      type: "string",
+      description: "Small text above the title (e.g., 'Trusted By')",
+    }),
+    defineField({
+      name: "title",
+      title: "Title",
+      type: "string",
+      description: "Main heading for the section",
+    }),
+    defineField({
+      name: "description",
+      title: "Description",
+      type: "text",
+      rows: 2,
+      description: "Supporting text below the title",
+    }),
+  ],
+  preview: {
+    prepare() {
+      return { title: "Clients Section Settings" };
+    },
+  },
+});

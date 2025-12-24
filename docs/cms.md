@@ -27,6 +27,7 @@ The website uses Sanity CMS for content management, allowing non-technical users
 | Calculator | ROI calculator labels and settings |
 | Contact | Contact form text and settings |
 | Testimonial Section | Section header for testimonials |
+| Client Section | Section header for client logos |
 | Navigation | Nav links, contact info, social links |
 | Layout | Header/footer content |
 

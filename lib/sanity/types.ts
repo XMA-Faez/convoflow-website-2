@@ -145,6 +145,15 @@ export interface ClientItem {
   featured?: boolean;
 }
 
+export interface ClientsContent {
+  section: {
+    sectionLabel: string;
+    title: string;
+    description: string;
+  } | null;
+  items: ClientItem[];
+}
+
 export interface NavigationContent {
   navLinks: { label: string; href: string }[];
   whatsappNumber: string;
@@ -188,7 +197,7 @@ export interface SiteContent {
   calculator: CalculatorContent | null;
   contact: ContactContent | null;
   testimonials: TestimonialsContent;
-  clients: ClientItem[];
+  clients: ClientsContent;
   navigation: NavigationContent | null;
   layout: LayoutContent | null;
 }

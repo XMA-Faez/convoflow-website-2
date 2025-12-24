@@ -12,7 +12,7 @@ const singletonTypes = new Set([
   "process",
   "calculator",
   "contact",
-  "testimonialSection",
+  "clientSection",
   "navigation",
   "layout",
 ]);
@@ -53,15 +53,13 @@ export default defineConfig({
               .child(S.document().schemaType("contact").documentId("contact")),
             S.divider(),
             S.listItem()
-              .title("Testimonials Section Settings")
-              .id("testimonialSection")
+              .title("Clients Section Settings")
+              .id("clientSection")
               .child(
                 S.document()
-                  .schemaType("testimonialSection")
-                  .documentId("testimonialSection")
+                  .schemaType("clientSection")
+                  .documentId("clientSection")
               ),
-            S.documentTypeListItem("testimonial").title("Testimonials"),
-            S.divider(),
             S.documentTypeListItem("clientLogo").title("Client Logos"),
             S.divider(),
             S.listItem()

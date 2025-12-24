@@ -5,7 +5,7 @@ import type {
   CalculatorContent,
   ContactContent,
   TestimonialsContent,
-  ClientItem,
+  ClientsContent,
   NavigationContent,
   LayoutContent,
 } from "./types";
@@ -204,14 +204,22 @@ export const fallbackContent = {
     items: [],
   } satisfies TestimonialsContent,
 
-  clients: clientsData.map((c) => ({
-    id: c.id,
-    name: c.name,
-    industry: c.industry,
-    website: c.website,
-    logoUrl: c.logo,
-    featured: c.featured,
-  })) satisfies ClientItem[],
+  clients: {
+    section: {
+      sectionLabel: "Trusted By",
+      title: "Industry Leaders",
+      description:
+        "From healthcare to aviation, real estate to fintech — we help businesses across industries transform their customer conversations.",
+    },
+    items: clientsData.map((c) => ({
+      id: c.id,
+      name: c.name,
+      industry: c.industry,
+      website: c.website,
+      logoUrl: c.logo,
+      featured: c.featured,
+    })),
+  } satisfies ClientsContent,
 
   navigation: {
     navLinks: [
