@@ -4,12 +4,17 @@ import { useState, useEffect, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button, Input, PhoneInput } from "@/components/primitives";
 import { fadeInUp } from "@/lib/animations";
+import type { ContactContent } from "@/lib/sanity/types";
+
+interface ContactFormProps {
+  content: ContactContent;
+}
 
 interface FormData {
   firstName: string;
   lastName: string;
   phone: string;
-  language: "en" | "ar";
+  language: string;
 }
 
 interface FormErrors {
@@ -22,12 +27,14 @@ const WEBHOOK_URL =
   "https://services.leadconnectorhq.com/hooks/NiZDx1EdWj2vIGRJkg5Z/webhook-trigger/17746e45-e7dd-404d-acae-ec4d71d6f70c";
 
 
-export function ContactForm() {
+export function ContactForm({ content }: ContactFormProps) {
+  const defaultLanguage = content.form.languageOptions[0]?.value || "en";
+
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
     phone: "",
-    language: "en",
+    language: defaultLanguage,
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -42,17 +49,17 @@ export function ContactForm() {
     const newErrors: FormErrors = {};
 
     if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required";
+      newErrors.firstName = content.form.errors.firstNameRequired;
     }
 
     if (!formData.lastName.trim()) {
-      newErrors.lastName = "Last name is required";
+      newErrors.lastName = content.form.errors.lastNameRequired;
     }
 
     if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
+      newErrors.phone = content.form.errors.phoneRequired;
     } else if (!isPhoneValid) {
-      newErrors.phone = phoneValidationError || "Please enter a valid phone number";
+      newErrors.phone = phoneValidationError || content.form.errors.phoneInvalid;
     }
 
     setErrors(newErrors);
@@ -106,7 +113,7 @@ export function ContactForm() {
       setIsSuccess(true);
       setCountdown(60);
     } catch {
-      setSubmitError("Something went wrong. Please try again.");
+      setSubmitError(content.form.errors.submitFailed);
     } finally {
       setIsSubmitting(false);
     }
@@ -173,10 +180,10 @@ export function ContactForm() {
             </svg>
           </motion.div>
           <h3 className="text-2xl font-bold text-neutral-900 mb-2">
-            Thank You, {formData.firstName}!
+            {content.successTitle.replace("{firstName}", formData.firstName)}
           </h3>
           <p className="text-neutral-600 mb-4">
-            Sara will give you a call within:
+            {content.successMessage}
           </p>
           <div className="flex flex-col items-center gap-2 mb-6">
               <div className="relative w-20 h-20">
@@ -214,7 +221,7 @@ export function ContactForm() {
               </div>
             </div>
           <Button intent="secondary" onClick={handleReset}>
-            Send Another Message
+            {content.resetButtonText}
           </Button>
         </motion.div>
       ) : (
@@ -236,8 +243,8 @@ export function ContactForm() {
             <motion.div variants={fadeInUp}>
               <Input
                 name="firstName"
-                label="First Name"
-                placeholder="John"
+                label={content.form.labels.firstName}
+                placeholder={content.form.placeholders.firstName}
                 value={formData.firstName}
                 onChange={(e) => handleInputChange("firstName", e.target.value)}
                 error={errors.firstName}
@@ -248,8 +255,8 @@ export function ContactForm() {
             <motion.div variants={fadeInUp}>
               <Input
                 name="lastName"
-                label="Last Name"
-                placeholder="Doe"
+                label={content.form.labels.lastName}
+                placeholder={content.form.placeholders.lastName}
                 value={formData.lastName}
                 onChange={(e) => handleInputChange("lastName", e.target.value)}
                 error={errors.lastName}
@@ -262,7 +269,7 @@ export function ContactForm() {
           <motion.div variants={fadeInUp}>
             <PhoneInput
               name="phone"
-              label="Phone Number"
+              label={content.form.labels.phone}
               onChange={handlePhoneChange}
               error={errors.phone}
               disabled={isSubmitting}
@@ -275,19 +282,20 @@ export function ContactForm() {
               htmlFor="language"
               className="block text-sm font-medium text-neutral-700 mb-2"
             >
-              Preferred Language
+              {content.form.labels.language}
             </label>
             <select
               id="language"
               value={formData.language}
-              onChange={(e) =>
-                handleInputChange("language", e.target.value as "en" | "ar")
-              }
+              onChange={(e) => handleInputChange("language", e.target.value)}
               disabled={isSubmitting}
               className="w-full px-4 py-3 rounded-xl border-2 border-neutral-200 bg-white text-neutral-900 transition-all duration-200 focus:outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-200 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <option value="en">English</option>
-              <option value="ar">Arabic</option>
+              {content.form.languageOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
             </select>
           </motion.div>
 
@@ -329,10 +337,10 @@ export function ContactForm() {
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                     />
                   </svg>
-                  Submitting...
+                  {content.form.submittingText}
                 </span>
               ) : (
-                "Book a 30 Min Audit Call"
+                content.form.submitButtonText
               )}
             </Button>
           </motion.div>

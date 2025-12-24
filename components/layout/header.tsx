@@ -5,10 +5,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Link, ButtonLink } from "@/components/primitives";
 import { Container } from "./container";
-import { navLinks } from "@/data/navigation";
 import Image from "next/image";
+import type { LayoutContent, NavigationContent } from "@/lib/sanity/types";
 
-export function Header() {
+interface HeaderProps {
+  content?: LayoutContent["header"] | null;
+  navigation?: NavigationContent | null;
+}
+
+export function Header({ content, navigation }: HeaderProps) {
+  const navLinks = navigation?.navLinks || [];
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -56,7 +62,7 @@ export function Header() {
           >
             <Image
               src="/logo.png"
-              alt="BookedByAI Logo"
+              alt={content?.logoAlt || "BookedByAI Logo"}
               width={160}
               height={48}
               className="h-12 w-auto object-contain"
@@ -88,7 +94,7 @@ export function Header() {
                 scrollToSection("#contact");
               }}
             >
-              Book a 30 Min Audit Call
+              {content?.ctaText || "Book a 30 Min Audit Call"}
             </ButtonLink>
           </div>
 
@@ -157,7 +163,7 @@ export function Header() {
                     scrollToSection("#contact");
                   }}
                 >
-                  Book a 30 Min Audit Call
+                  {content?.ctaText || "Book a 30 Min Audit Call"}
                 </ButtonLink>
               </div>
             </Container>

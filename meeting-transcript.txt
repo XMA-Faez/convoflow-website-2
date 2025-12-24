@@ -1,0 +1,430 @@
+Impromptu Google Meet Meeting - December 17
+VIEW RECORDING - 47 mins (No highlights): https://fathom.video/share/Lbuxd3gSpVTxyY-y4KGkhwjNonfoJGUD
+
+---
+
+0:00 - Faez Ansari (xmaagency.com)
+  Hi.
+
+0:01 - Abdus Samad Khan
+  Hi, how are you? Can you hear me? Good. Yeah.
+
+0:05 - Faez Ansari (xmaagency.com)
+  How's it doing? Good, bro.
+
+0:08 - Abdus Samad Khan
+  Good. It's been busy, but the websites are, I think, coming together now, finally. We're quite close to getting it live.  For us, as well, a lot of our, how I would say, traffic gets directed to the website. I don't know, because a lot of people, they feel like they see something and want to know more about it before they inquire, right?  So, you kind of want to get this done. Yeah.
+
+0:32 - Faez Ansari (xmaagency.com)
+  The fastest and also the best way possible.
+
+0:34 - Abdus Samad Khan
+  So, we don't have to come back to it later on.
+
+0:36 - Faez Ansari (xmaagency.com)
+  Yeah.
+
+0:37 - Abdus Samad Khan
+  Yeah, I think this part looks great. The only part I would add to it, I don't think you've been seeing it in the documents I've been sending, but remember the image I sent over with, like, the prefer WhatsApp?  So, can you see my call? Can you see my screen here? Yeah. Can we add a little text like this below?  The call to action. That be the first thing. And then like a WhatsApp link, like it'll just open up their WhatsApp.  All right, I gotcha.
+
+1:18 - Faez Ansari (xmaagency.com)
+  Let me. Yeah, this is a new thing that me and Ronan talked about. It was his idea that made it more interactive.  So I was like, if we add a start button, that makes them more engaged because they have to.
+
+1:37 - Abdus Samad Khan
+  because then they don't just scroll through it. They're like, oh, what is this?
+
+1:42 - Faez Ansari (xmaagency.com)
+  Oh, my God, this is genius, bro. This is. Yeah. Hello, I got it, So. Yeah, I got to fetch the input on all that, but.  Yeah, I think we're going to add the name as well.
+
+1:58 - Abdus Samad Khan
+  And like the minimum details. It's because you can't just call without the name. I think at least name and number should be there, right?  All right. If you see the call to action, like the name and number should be there at least, you know?  Yeah. Also, one more thing I would add is can we have this? So this is great, right?
+
+2:19 - Faez Ansari (xmaagency.com)
+  This is amazing.
+
+2:21 - Abdus Samad Khan
+  Can we, I want to make a, I want to make it kind of show people the customer journey. Like, call happens, lead comes in from Facebook, Instagram, Google, website, gets called by AI caller.  They don't pick up the AI caller's voice. It goes through text message. They, okay, after going through text message, they say, oh, yeah, sorry, I was busy.  Can you call me now? Then the AI caller calls them, qualifies them, puts updates, CRM, puts it in, books in a calendar appointment.  So like kind of going through like the, the lifeline of a. Lead in a visual format, because this is just showing like we're like a WhatsApp chatbot kind of thing.  This is all I'm getting from it, whereas we do a lot of things, right? And I think like showing like one sort of interaction where lead comes in from ad, okay?  Lead comes in from ad, showing like create some sort of animation GIF or like icon where it shows like a AI caller is calling them.  They don't pick up, right? AI automatically sends a WhatsApp message. Hi, this is Sarah from your company, from example company.  We were trying to reach you. Do you have, can we give you a call now or would you like to continue here?  Sorry, I was quite busy. You can give me a call, right? And then the AI caller calls them, qualifies them, updates the CRM with the notes, you know, and then books them into the calendar.  here. They… Sends them reminders, they don't show up, the AI caller calls them again, books them in again, they show up, sale, right?  Like, something like this would be insane, bro.
+
+4:12 - Faez Ansari (xmaagency.com)
+  If that happens... know, it's also insane to create. I know, it's not... insane to watch.
+
+4:18 - Abdus Samad Khan
+  like, bro, I'm telling you, like, it's probably going to be, like, insanely hard to create, right? Because, like, obviously, you have, like, a lot of things, but, bro, like, honestly, if can get...  Like, I know it's going to be very hard to create, but if we can get this done, it'll, like, kind of do the whole job of the website.  Like, that's all I want. Because the issue is, right?
+
+4:36 - Faez Ansari (xmaagency.com)
+  I think it's better to distill it, you know? Okay. Distill it down to the most important parts and create the visuals out of it.  Not really visuals, but, like, the same way that we have how we work, but in a different format. But we are showcasing the, you know, the most important aspects of it, you know?  Uh... In an easy to understand manner, so like what you said, I think it can be shrunken down to the most important steps, like maybe four steps, five steps.
+
+5:11 - Abdus Samad Khan
+  Okay, then you can just kind of create a customer journey, that's quite simple, then don't need to go into the other things, just go, lead comes in from ad, it's a social sort of ad, ad stuff that would like look at it and like, yeah, it's advertising campaign, lead comes in, gets called within 30 seconds, gets the call, like something like that, lead does not pick up, gets WhatsApp message, WhatsApp message, the person says, oh, sorry, I was busy, can you call me now, lead calls them, books them into the update CRM, like, we can just show the qualification in booking for it, now, right, I think that's, if we can edit that, then that would be good, like, obviously, think you would just need to add.
+
+5:55 - Faez Ansari (xmaagency.com)
+  if you have that, instead of... So if want to edit this one and have that separately, I think we can edit this one and have that inbuilt in this one.
+
+6:08 - Abdus Samad Khan
+  like, so example, you see these icons here, we are imagining it as that if we can have some sort of icon or like an animation or like some sort of thing that showcases like, add, lead, call, message done by AI done message from the other person.  Like, so it's not just like, you know, I mean, this shows as a chat and kind of just like animation, which like shows the different part of the customer journey.  So what you're doing here is like you're showcasing that you're not just an AI chatbot, you're not just an AI wise, you're not just automation, automated messages, you're kind of everything without obviously making it too complicated and going to everything that we can do.
+
+6:52 - Faez Ansari (xmaagency.com)
+  Right, so, okay, let me bring up my notes once again. you next time. you. So, in order for me to create, make make it, oh, , it's blue for you.  I didn't know, the thing is, I'm using, , Zen Browser. Okay. For me, those are white. For you, it's blue.  It's better to, I didn't know that. Like, what's blue? I'm talking about the sliders in the calculator. Oh.
+
+7:51 - Abdus Samad Khan
+  Like, what color is it supposed to be? From my end, it's white.
+
+7:57 - Faez Ansari (xmaagency.com)
+  Oh, . Yeah, I didn't know. All right, so I need to make it custom. All right, good enough. Yeah.  So the way it works is the lead option. Yeah. And then, firstly, automated message goes out. Yeah.
+
+8:26 - Abdus Samad Khan
+  No, lead opts in, automated AI call goes out, okay, like a call ringing.
+
+8:32 - Faez Ansari (xmaagency.com)
+  AI calls goes out.
+
+8:33 - Abdus Samad Khan
+  call goes out, calls within 30 seconds, okay, something which will make sure like that. Then, they don't pick up, okay.  And if they didn't pick up, automated message goes out. Automated message goes out, let's make it like an AI message, make it like something like a human would say, because that is the reality.  I don't want them to think that it's an automated message that would go out. I would say something like, hi, this is X, this is Sarah from X Company, I tried calling you, let me know if it works now for a quick call or would you like to continue here and chat, right?  They would probably message, oh, sorry, I was busy, can you call me now? AI gives call, AI books in the lead, it updates CRM and calendar, that's it.
+
+9:25 - Faez Ansari (xmaagency.com)
+  Okay, so in the message, you either set a booking or, and they're like, oh, I am busy, can you call me later?  And then it sets an automated, you know, appointment, it automatically sets the appointment for the call and the AI calls, is that right?
+
+9:45 - Abdus Samad Khan
+  Yeah, it automatically sets their appointment and updates the CRM and all the tools, right? And then you could just have like some sort of an electronic for that, that would be the end.  Now, either you can have this in the same form. Format that you have it, but this is like purely chat, so you might need to change up the format of how this animation is.
+
+10:07 - Faez Ansari (xmaagency.com)
+  Yeah, I'm not sure if I, like, in terms of animations, I need to sit down and think about it.  Yes.
+
+10:23 - Abdus Samad Khan
+  It's going to take time for me.
+
+10:24 - Faez Ansari (xmaagency.com)
+  If I have to be honest, it's going to take time for me to create something that is actually good with high quality.
+
+10:34 - Abdus Samad Khan
+  Okay, so what we can do here, let's do this, okay? What we can do is because I also do need to get something live in my domain.  Yes. I do have clients that are like, have you shut down your business, right? Like, yeah, exactly. Yeah, so what we can do is we can keep this in the pipeline, right?  Also, like, it's not something that we need, like, today, but it can be done, like, tomorrow. Or like next week, week after, right?  More of a longer term thing, I think. But I do see the importance of it because of how it would probably like...
+
+11:09 - Faez Ansari (xmaagency.com)
+  It's a matter of showing the capability. It's like, yeah, you have a technology where you can call the lead within 30 seconds.  And also does the appointments, does the conversations, you know, all that things. So, this is the message that you want to get across to the people that are watching the website.  So, yeah, we want to make it as easy as possible to send that message. Yeah. Yeah, cool. So, I'll think about it.  Maybe it wouldn't be visuals for now. Maybe I found a better way to maybe using copywriting and make it right.
+
+11:54 - Abdus Samad Khan
+  So, what was it like we need, like, let's say, to do, like, immediately as... As as we can, is let's make these edits.  If you can note them down, that'd be great. Right? Like, yeah, these are just text-based edits. Like, probably like if I'm not sure how you're exactly doing this, but you could probably just remove some text or add some text.  Okay. Yeah. Um, so first edit, I would say is instead of saying the book by end growth engine builds, just say we build.  So remove this and say we build, we build and run your entire acquisition system. Engineer to double the number of qualified conversations you can get from leads you already generated without increasing ad spend.  Right?
+
+12:43 - Faez Ansari (xmaagency.com)
+  Um, add the WhatsApp book here. Here's the thing. I wanted to talk about the headline as well. Okay. Um, so the headline says, uh, you're chasing leads in self-closing them.  So, so So, the thing is, if somebody doesn't have any frame of reference and then reads this, they don't understand what you do.  So the point of headline is to understand the main point of the website or the service that you have immediately.  Yeah. So, I think it's a bit vague right now. Maybe we can make it a bit more clear. What do you have in mind?  I have, so the best way for copywriting that I found very recently and I implemented for another website was that you have like certain customers and they're happy with it.  So, you can reuse their wordings and their experience and use it as a headline. For example, if, so I was working on a call.  Rental website, and I looked at the reviews that they had. They had like 4,000, 5,000 reviews, but the majority of people were saying it was so easy to get the cars.  Like they brought the cars for us, and they picked it up. It was so easy to receive the car.  Like it was so comfortable, like so easy. And so what I did, I took that and made it the headline.  Anyway, the headline is like any luxury car you desire delivered clean anywhere in Dubai. So immediately they know like they can have a luxury car, whatever they want, and it can be delivered anywhere in Dubai.  So it's very straightforward and clear. So something like that, the thing is it takes time to get there. Um, so.  So right now, I know what you do. Maybe I can go back and think about it. I can suggest you a headline that would work.
+
+15:12 - Abdus Samad Khan
+  I understand. What do you think? I think I get that because the thing is right now with this headline, it's like I know people are coming on to the website.  I'm imagining where they're coming from, what they've seen, what's their journey. They're either searching up Cornerflow, but that's very unlikely because we have  SEO right now and no Google My Business account, which is  up.
+
+15:34 - Faez Ansari (xmaagency.com)
+  Okay. Right.
+
+15:35 - Abdus Samad Khan
+  So they're not coming from there and we do need to fix that, but that's a story for another day.  They're cold. They're very cold. They would come from the ads. I primarily think they would come from the Instagram or Facebook ads.  would just keep some weird video with some weird editing and stuff.
+
+15:50 - Faez Ansari (xmaagency.com)
+  So you want to cater to the warm audience that you are guessing they have already watched the video.
+
+15:58 - Abdus Samad Khan
+  I'm assuming that. Right now, most people who are coming to the website are coming from the video because there is no other route to come to the website than the website.  Because if you search a cornerflow, you will probably see the website, but who's going to search a cornerflow on a day-to-day basis?  Our SEO is not that good that people will just randomly come to the website, right? So they are coming from one place and one place only, that is our social media.  And they have probably seen our ad, a bit of it. Right. Right.
+
+16:25 - Faez Ansari (xmaagency.com)
+  And they're looking on the website.
+
+16:26 - Abdus Samad Khan
+  I've talked to a client, by the way, one of the people he, I've had a call with almost close, by the way, probably close them today or tomorrow, has come in from, you know how currently it says unavailable, under maintenance, WhatsApp.  Yeah.
+
+16:41 - Faez Ansari (xmaagency.com)
+  What's up?
+
+16:41 - Abdus Samad Khan
+  And they're like, look, I saw your ad, seemed quite interesting. Then I went on your website to learn more and I came through you.  Right.
+
+16:48 - Faez Ansari (xmaagency.com)
+  Yeah.
+
+16:49 - Abdus Samad Khan
+  Because I was wondering where they came from to randomly message me. Right.
+
+16:53 - Faez Ansari (xmaagency.com)
+  Yeah.
+
+16:54 - Abdus Samad Khan
+  sending me her, her kind of psychology of why she would even go to the website, which makes sense.
+
+16:59 - Faez Ansari (xmaagency.com)
+  Like they see.
+
+17:00 - Abdus Samad Khan
+  But they don't get enough information from that to click on the form, because to be honest, if you think about clicking on the form, they probably associate exactly the point.
+
+17:08 - Faez Ansari (xmaagency.com)
+  So they want to get more information. And if you distill the main business done to a couple of words, it makes it way easier for them to understand it.  So right now, this headline doesn't get that across. So it's like you want to be informational. You want to, you know, make them understand the business as fast as possible.  Okay. So with this, you're chasing leads instead of closing them. Doesn't really explain the business. Right. So this is like more of like a pain point, uh, exactly.  It is a pain point. Like what do they do at the book? So you use the pain points in the ad, or you don't use the pain.
+
+18:03 - Abdus Samad Khan
+  For XMA, isn't that what you guys are doing?
+
+18:08 - Faez Ansari (xmaagency.com)
+  For XMA, most property ads attract browsers, you will attract buyers. Most property ads attract browsers, will attract buyers. But this is what we do.  Yeah, we can work on our own copy as well. The technique that I found was, like, I found it, like, two days ago.
+
+18:36 - Abdus Samad Khan
+  My personal, like, suggestion here would be, like, I've seen this, by the way. I would say that I don't, when I hear browsers, I think of Firefox or Google Chrome or Safari.  Right, that's the first When hear what?
+
+18:50 - Faez Ansari (xmaagency.com)
+  Oh, browsers. Yeah, when I hear the word browser, like, what's the first thing that comes to your head?
+
+18:55 - Abdus Samad Khan
+  Google Chrome. Right? Like, if I'm, if I'm scrolling, like... Quick five seconds, right?
+
+19:01 - Faez Ansari (xmaagency.com)
+  That's a good point.
+
+19:03 - Abdus Samad Khan
+  Like, it needs to be able to attract, I understand what you're trying to say here, but it's kind of like, I have to really think about it, right?  And it's also like qualified leads delivered to your inbox. Obviously, it's saying that we will build ads for real estate.  The thing is, I'm not going to lie, our website is not the best example.
+
+19:23 - Faez Ansari (xmaagency.com)
+  Because it's out there. So, like, I wouldn't use our own website as an example. So, but this website, this is the one that I've made recently.  This one, right? The CRM system? No, that's actually older. So, this is the website that I made and finished, actually, like, days ago.  And I learned about this copywriting technique. Yeah, I was searching through it, I think, yesterday or two days ago, where I ended up with this.  So, luxury car you desire, delivered clean anywhere in Dubai. talking with the of So, So, because this is what they do, actually, and this is their USB.  So, and it is a car rental. From Rolls-Royce to Lamborghini WhatsApp message, car at your door by morning. So, it is a car rental.  They can do that. So, it's straight USB. And then, when you scroll, you can see the cars, you know, all the fleets of cars that they have.  And, you know, different features and all that. just bring it to testimonials. And that's pretty much it. So, it's like, maybe, and here's a question for you.  When you hear this, luxury car you desire to deliver clean anywhere in Dubai, is that clear for you? That what they do?  Yeah, it's very clear.
+
+20:52 - Abdus Samad Khan
+  Like, I know that I'm here for not a luxury car. So, if I'm looking for a VM, no, if I'm looking for, like, a Nissan, I, the...  It's on Sunny, I automatically get out the website, right?
+
+21:02 - Faez Ansari (xmaagency.com)
+  So I know what I'm expecting here.
+
+21:04 - Abdus Samad Khan
+  Even the logos, by the way, kind of push that in. So you're only going to attract qualified people viewing the website.  Like it's like BMW, Audi, Porsche. So these guys have all of these cars. Second thing, I'm like, my eyeballs are going towards like you desire.  So it's like any luxury car. So they have all luxury cars and it's anyone that I would want. And they're also clean and I can get it anywhere in Dubai.  So I'm thinking as the rent-a-car owner that probably thought about all the objections and I've answered it in like, what, seven words?  Like literally like. It's very distilled.
+
+21:42 - Faez Ansari (xmaagency.com)
+  Yeah. But I think it does not very well. Wild to get here, by the way. Like I was doing research for two hours to get to this word, to this sentence that you have here.
+
+21:51 - Abdus Samad Khan
+  I think one issue I'm having right now with the copywriting for Kornoplo, I think I'm going to have to work on it and you can let me know as well.  Is. Because I feel like, see, like, look, I hate this part, by the way, I'm going to completely change this.  The book by AI Growth Engine, like, I do not know what that is. I think I'm using a lot of complicated words here, which could be distilled to, like, very simple, like, imagine you're talking to, like, a five-year-old.  Because what I've understood, right, is a lot of the leads are a lot more stupid than you think, right?  You would understand what we sell, maybe, right? You go to website, these guys do this, this, this, But if you're talking to, like, an average business owner, an average person who is our clientele, like, they're, like, booked by AI, what the hell is that?  Growth Engine, Acquisition System, Follow-Up, what does that mean? Yeah, it becomes a jarring thing, like, get me out of here, right?  Like, instead, I want to feel like, I want to, not only do I want to, obviously, like, like you've done in the rental car, right, make sure that only.  Qualified eyeballs are looking at it, make it very careful on how I word it so that only qualified people would look at it like it's not a cold calling system, it's not a software, they're an agency, right?  Also make sure that it's as I'm explaining it so easily and having it like in diagrams so easily that they understand that, yeah, I run ads, my leads are going to , right?  These guys can simply automate my calls, my WhatsApp messages, my follow-ups, so I make more, so I get more calls to show up, so I get more money.
+
+23:35 - Faez Ansari (xmaagency.com)
+  Well, okay, that adds up.
+
+23:36 - Abdus Samad Khan
+  Let me see how this works. That's kind of how I want it to go, right? Instead, right now, it's like booked by AI, that, that, that, that, that, that, like makes seem very complicated, but you don't really understand what's happening here.  So I have a question, right? So I'll work on the copy, okay? I think once I work on the copy, I think that's most of what needs to be done, right?  Yeah, I think the copy, copy, We just need to get changed. Also, like what I would say is a quick edit we can do here is like remove WhatsApp in this part.  Okay.
+
+24:09 - Faez Ansari (xmaagency.com)
+  Okay. And just put leads for number of leads, right? Yeah.
+
+24:12 - Abdus Samad Khan
+  Number of leads per month, current conversion rate, your average customer value response time, calculate ROI, right? Get started now.  Also, let's say with our system, not CRM, right? Well, I think a lot of this is like, obviously, I haven't tested this part of it, Ronan has, so he's gonna say more on that.  But what I'll do is, Ronan will tell you more about how, because he has the formulas and everything for this part, and how we can make this into a funnel where we just, it's like a good landing page, right?  Yeah. I can drive like Google ads to, and I can make money with this page, right? So- Also, let's come up with the- Formulas and stuff.
+
+24:53 - Faez Ansari (xmaagency.com)
+  With a plan for, you know, for how you envision the website. In general, so it's like there are a bunch of things that are missing and I'm still working on it.  Like I'm going to fix all of this, but I think last time me and Ronan talked, we talked about the, you know, different, you know, components that you saw from our CRM web page.  And it wants to add it. Yeah. And so, which I am working on, I will add them, but I wanted to finalize the overall structure of the website that you want.  So like, what sessions do you want to add? Where do you want to add it? You know, stuff like that.  And have a certain plan and get that done.
+
+25:48 - Abdus Samad Khan
+  So, so right now, I can, is there a certain way I can add, like, in Vercel, I'm not sure how your backend looks like, but is there a way I can just directly edit the text on the website?
+
+26:00 - Faez Ansari (xmaagency.com)
+  That would be tough.
+
+26:07 - Abdus Samad Khan
+  Or let's do this. Let me use Inspect on the browser. And make, because I like to see my edits on the actual website so I can imagine it while I'm making the copy.
+
+26:20 - Faez Ansari (xmaagency.com)
+  It's a lot easier for me.
+
+26:22 - Abdus Samad Khan
+  So what I'll do is I'll make the copy on the current frame of the website, right? And what I'll do is I'll take screenshots or I'll do one thing.
+
+26:33 - Faez Ansari (xmaagency.com)
+  Maybe I can make it that you can go here. It's a temporary thing. But when you open up the browser, you can just click on any word that you see or any paragraph that you see and be able to edit it.  Oh, yeah.
+
+26:49 - Abdus Samad Khan
+  That would make life a lot easier.
+
+26:52 - Faez Ansari (xmaagency.com)
+  Yeah. That one in terms of copy. Yeah. But in general, in terms of the sections, so right now. And the hero section is, I think, considered done, right?  Just in terms of copy that needs to be changed, which is fine. Yeah, and also the WhatsApp CTA here.
+
+27:10 - Abdus Samad Khan
+  Yeah, the WhatsApp CTA will be added.
+
+27:12 - Faez Ansari (xmaagency.com)
+  And then we have a CRD in action section. Now, then I have to go back and think about how we can improve it.  But this is going to be like a section that we are showcasing the overall system, right? Like how it works, what capabilities that you have and that you offer to your clients, you know, stuff like that.  So that's that section.
+
+27:42 - Abdus Samad Khan
+  And then we get to trusted by industry leaders instead of saying trusted by industry leaders, choose us, right? Okay, quick thing.  Yeah, yeah.
+
+27:55 - Faez Ansari (xmaagency.com)
+  trusted by industry leaders. And then instead of trusting... Trusted by, we can say testimonials, or not really testimonials.
+
+28:06 - Abdus Samad Khan
+  I think we can just put trusted by and then keep industry leaders and just delete, choose us.
+
+28:12 - Faez Ansari (xmaagency.com)
+  Hmm, I see. Yeah, it's tough because, so the point of having that batch trusted by is to explain the section.  So, for example, if we go down, you see how we work. Okay, so when somebody reads that, they know this is how we work section.  So, if they read it, this is like about the process and procedure of, you know, that you go through.  And then in the title, it's like, you're booked by system installed in seven days. This is your messaging. So, like, the label just tells what section this is.  And the title is just for the sake of messaging or sending a message. So, that's why I have trusted by, which is okay, this is a trusted by section, now we can change it, I think it is, wait, you're right, but there are no one sentence with the title, so the main message is industry leaders choose us, you see, it's just a position of the trusted by and the title makes that mistake, trusted by industry leaders, when you read it together, first question, right, like, by, update with the testimonial, right, I reached out a couple of plans for the testimonial, I'm not sure if you guys have the same experience, right, or down for it, I mean, if not on, but they were quite, um, how do I say, afraid to be on camera, destroy, yeah, they just didn't want to be on camera, they were fine with leaving a text, text message, right, or any, so I had this site I used called testimonial something, where they wrote me a testimonial testimonial
+
+30:00 - Abdus Samad Khan
+  And with their like designation and everything, it's like in a cool way, but it's like a text testimonial, right?  They're not fine with a video testimonial because they're like a bit shy and stuff. So I'm not sure how, I did imagine like a cool video and like the part that you've created, it works really well.  And I'd do wonders if we had that, but like it's quite tough in Dubai. Like, I don't know, people are scared, kind of hop on video and stuff, you know?  So are they like business owners, right?
+
+30:32 - Faez Ansari (xmaagency.com)
+  Are they on Instagram doing anything or not really?
+
+30:36 - Abdus Samad Khan
+  So the people I've talked to, the Sio, he was, they're business owners, but not on Instagram. A lot of them aren't on Instagram, to be honest.  I feel like the ones that are on Instagram, they'd be fine. They're like, they don't care.
+
+30:48 - Faez Ansari (xmaagency.com)
+  Yeah, I see that. Even if we give them their script, they're not comfortable, right? I gave them a script, bro.
+
+30:56 - Abdus Samad Khan
+  I gave them, I prepared a whole thing before that, right? What I'm going to try to do, right, is I'm going to try to create an incentive.
+
+31:05 - Faez Ansari (xmaagency.com)
+  Yeah, that's what I thought. I wanted to tell you. Yeah, I was thinking about some sort of incentive, maybe a gift or something.  I don't know. I don't know what they want.
+
+31:14 - Abdus Samad Khan
+  They probably want a discount or something percentage on the next three That's what Alex and Lindsay does. Yeah, I'm basically driving them into...  And for gym business, very easy.
+
+31:26 - Faez Ansari (xmaagency.com)
+  just gives out the t-shirt. I don't know what you would do.
+
+31:30 - Abdus Samad Khan
+  Yeah, mean, for us, like, for me, it'd be, like, offering, like, even if I offer, like, a 10% off, like, I'd be offering, like, uh, like, I'd be offering, like, 500, 600, like, 1,000 off on my retainer.  So, like, I'm paying 1,000 for the rate. It'd be quite an expensive.
+
+31:46 - Faez Ansari (xmaagency.com)
+  It might worth it, though, you know, because that's...
+
+31:50 - Abdus Samad Khan
+  Well, I was able to put that on my sales presentations or on my calls or on the website, or, like, here.  Like, for me, like, one of the clients I had, like, this guy is, like... He'll do anything for me, I can give him, I basically, I can ask any client, any prospect of mine to call him, and he'll close the prospect for me, like literally, he's that convincing, right, like he is a client, so their prospects are more open to trusting him, and he does happen to own a very huge company, right, which spends a lot of money on marketing, and kind of, so like it's very easy for him to kind of do that for me.  Right, so the thing is, but he's afraid of video, so, so what I had in mind is I'll offer the incentives, let me see what I can do, because I do want to get three videos, and like case studies, right, because I also do want to kind of have the identity switch in sales calls and stuff, and kind of show that, look, this is working for other people, I don't need you to sign up, you need me to sign up, that kind of thing.  There was also another guy called trybacks, just to remind me.
+
+33:02 - Faez Ansari (xmaagency.com)
+  That guy also has a marketing agency. He has a webpage that is just testimonials. And it is like he's certainly seen hundreds of testimonials.  But it was just text, I think. Let me show you my screen. Let me see if I can find it.  Maybe you can even do that with text for now. And then, you know, try to work on video testimonials.  Let's just go to any of them. So this guy is like making, I don't know, $500,000 per month. Something like this.  Okay. And he is quite big. So I think, yeah, he has a, like, gold, like, funnel. I don't remember the name.  But it's more like a landing page, basically. Yeah, it's just a landing page. But he had a page where it's just testimonials.  It was something like this, but like imagine the full web page. Like you just keep scrolling and just never ends of these reviews and testimonials.  And that might also work. Was it this? I think that coupled with, you know, that coupled with, uh, yeah, something like this.  It's like, this is just a testimonials. Jason did 90k last week and is on pace to do 500k. This guy, this guy, this guy, this guy.  It just doesn't end. And this is on the right end as well. Close deal this much. Close 6k today.  But you see, it's just the testimonials.
+
+35:00 - Abdus Samad Khan
+  Okay, so like I'll probably have to have what one of my clients send me a message, which is like where they usually don't talk to me about how much money they're making.  I know.
+
+35:12 - Faez Ansari (xmaagency.com)
+  Thank you, bro.
+
+35:15 - Abdus Samad Khan
+  I usually have to like, bro, could you slide something and what's up? Yeah, I don't know.
+
+35:22 - Faez Ansari (xmaagency.com)
+  But I mean, this guy is like, it's just ruling with testimonials, even in his acts. It's just testimonials. And that's it.
+
+35:32 - Abdus Samad Khan
+  Okay, I have an idea on how I can make this work. One thing I'll is I'll aim for at least three videos.  I have a few clients I can hit up, right? Not too many. fact, not that everyone's not having a great experience with us.  It's like, you know, some clients that have yet to hit that activation point. So they're going to be in progress to hit that activation or like amazing point.  So it's like weird for me to ask them. Right now, where they are. So I can only do it to clients that like have spent at least like, it has to be in the point of highest satisfaction.
+
+36:08 - Faez Ansari (xmaagency.com)
+  Yeah.
+
+36:09 - Abdus Samad Khan
+  So like two or three months is that sweet spot where like they've seen the sales because sales pipelines aren't that short for most people, especially most of the clients.  So let me see if I can squeeze some videos out. And if not, I also the tool I use for testimonials is quite cool.  It captures their, their designation and their photo and everything. So I could probably put it up in a cool way and put text around it to explain what he's made.  Right. So what I recommend is if you can send me over a way where I can kind of annotate or change the copy and frame of the website and send you like a final one.  Right. Right. So then you can actually technically then implement it. Right.
+
+36:59 - Faez Ansari (xmaagency.com)
+  Uh, instead of us, Having to go on call where it's very like loose ends and it's just kind of just discussing and consulting it's more like you know what this is exactly what i want yeah i want to put it wait i'm gonna do that and send it over yeah all good no problem sure so i'll work on it from tomorrow yeah and yeah the first thing i'll do is you know the easy faces and by the way do you want to go live with the coin website i think it is good to go no uh okay well what we can do is uh yeah first uh do we have to uh like what about the pop-up form are we not keeping that right now it is available it is there yeah okay we have to map it right with the webhook or is it yeah Ronan can you quickly just go over the uh uh obviously i told him that it's i just want to make sure that the form
+
+38:00 - Abdus Samad Khan
+  forms are connected, that the calculator does not say anything wrong, right?
+
+38:04 - ron dav
+  Yeah, the calculator, I know, there was an issue at the bottom, it said, oh yeah, I told you. Yeah, one second.  And one second, also, Faez, what about the play button for the chat flow? Remember we talked about, like, the play button?
+
+38:22 - Faez Ansari (xmaagency.com)
+  The play button has been added.
+
+38:24 - ron dav
+  Okay, let me just, yeah, because I just wanted you and Elvis to have a conversation, because he was obviously, he's more of, like, okay, the copy and the flow.  So, that's, okay, fine, got you. So, this, this, and then this is what we have to map, right?
+
+38:38 - Faez Ansari (xmaagency.com)
+  Yeah.
+
+38:39 - ron dav
+  So, basically, um, um, uh, I need to send this to a web book in GHL, and then if it's WhatsApp, add WhatsApp tag, if it's call, add whatever, right?  Yeah. Okay, got you. Okay. Okay. This. It's a CRM.
+
+38:59 - Faez Ansari (xmaagency.com)
+  It's CRM. CRM. It should be system. Yes. That's the only thing.
+
+39:04 - ron dav
+  The rest is like, I think, I don't know if the values obviously make sense. I have to send you this, right?  Yeah. I mean, I have to obviously think about exactly how to make this work because it's most likely going to be like, not WhatsApp leads, just leads per month, right?  Current conversion ratio, average order value, response time, and then I think that, yeah, that makes sense, right? That's basically what, how many leads are they getting, their current conversion ratio, that means how much money they're currently getting, and then the response time, and then with our system, obviously, we're responding instantly, follow up this, and that, and that, and that, and that, that.  Then obviously, you give them X amount of money. That's basically it, right? Okay, now, other than that, um, what's the, okay.  Now, obviously, we were going to, we were discussing about. You know, the whole thing, right? Do we have the entire flow?  What's most feasible? What's fastest to have them be interacted? I mean, you know, be part of the flow, but having them fill in their, you know?  Yeah, so at the end of it, we are asking.
+
+40:19 - Faez Ansari (xmaagency.com)
+  okay, okay, okay.
+
+40:21 - ron dav
+  And because I was thinking, okay, they're always watching the conversation at the end, we are asking for it. So if I send this, then where does this go?  So this has to go to, um, this, this can basically go to the same automation.
+
+40:39 - Faez Ansari (xmaagency.com)
+  Okay, issue now, I just remembered.
+
+40:42 - ron dav
+  If we send this there, then the guy doesn't know how to, I mean, we don't have the name of the person.  So.
+
+40:47 - Faez Ansari (xmaagency.com)
+  Yeah, I know. So this is also what we talked about. I'm gonna add the first thing to it.
+
+40:53 - ron dav
+  Yeah, just like, just like name and number. That's it. Yeah. Right. Um. So this is perfect. So have to map this and create a filter in GHL for WhatsApp and calls so they're separate messages.  Then, yeah, I think that's very good to go. The thing is that right now, I don't think we go live or we go live without the WhatsApp call to action because our WhatsApp agent is not ready.  When it's ready, I'll add this, right? So then I don't want to ruin the entire experience.
+
+41:29 - Faez Ansari (xmaagency.com)
+  It's very easy. So we can remove the WhatsApp for now. Yeah, remove the WhatsApp. We can even remove the whole question.
+
+41:36 - ron dav
+  Yeah, I think it's just best to remove this part for now. We just keep the regular forms. And then this is still find name number and then we'll map these forms as well.  So let me know what you need from my side. Do you want me to give you access to our GHL?  Yeah, that would be the easiest. Okay. Okay, one second. You set up the... Um, the web website of it for you.
+
+42:07 - Faez Ansari (xmaagency.com)
+  Sorry, what's the email?
+
+42:10 - ron dav
+  Files at xmaagency.com.
+
+42:13 - Faez Ansari (xmaagency.com)
+  Okay, one second.
+
+42:19 - ron dav
+  Files at xmaagency.com. xmaagency.com. xmaagency.com. What's your number? 052.
+
+42:35 - Faez Ansari (xmaagency.com)
+  Yeah. 954. 954. 2014.
+
+42:42 - ron dav
+  2014. Okay. We were just in the outbound email. No, click on Click on it. Okay. Out of view? Then launch first, click on it.  Basically, the figure that where I added it was a web. Website Form Trigger, so there's only like one flow here, so this is obviously webhook and whatever you sent me, et cetera, Yeah, I'll set up the webhook here and set up the conditions and from there.  The tag, the tag to trigger the call, right, is literally, um, first, okay, so basically there are two tags now, right?  There is first called AR, which is the arabication, first called EN. So then maybe, like, do we have them choose a language or, you know, what do you think?  So, is that too long?
+
+43:42 - Faez Ansari (xmaagency.com)
+  So for the, watch the demo one, it would be too much. But if somebody wants, but if they are filling out a form, that's fine.  Okay, so I think we can have, like, like, name this English-Arabic.
+
+44:00 - ron dav
+  Right, so have English, Arabic, if it's Arabic, then obviously first call, first call EN, then the other one first call AR, and then if it's, one second, yeah, so if it's a general flow, then this first call EN, but very simple, that's it, it's basically taking the information, adding a tag to the contact, that's it.
+
+44:31 - Faez Ansari (xmaagency.com)
+  Right, okay, if you want us to add it, just create the filters, then, yeah, I'll create the filters and conditions, yeah, from the, made it very easy to, you know, I just made the part about the web, that is a bit confusing and complex, and, and then I think we can go from there.
+
+44:52 - ron dav
+  Okay, so one more thing, is I think for the Arabic one, we, I think we have to update the custom.  Field as well. So it's saved as an Arabic name. I think it's, it's, um, update contact field, language, Arabic, as well.  It's a few automations. Uh, Arabic, English. So. Arabic form trigger.
+
+45:18 - Faez Ansari (xmaagency.com)
+  So.
+
+45:19 - ron dav
+  Yeah. Wait, sorry. Okay. Uh, basically just, um, I'll make it very simple. Right. Um, yeah. Yeah.
+
+45:26 - Faez Ansari (xmaagency.com)
+  Example.
+
+45:27 - ron dav
+  Lead comes in from the website. They choose English. Okay.
+
+45:30 - Faez Ansari (xmaagency.com)
+  Yeah.
+
+45:31 - ron dav
+  Then we essentially simply just come here, update, um, update the contact field as, oh, actually, like I said, just create the filters.  We'll do this. Right. You know what to do.
+
+45:43 - Faez Ansari (xmaagency.com)
+  All right. So what was the word for name again? Website form trigger.
+
+45:49 - ron dav
+  Right. Your website form.
+
+45:51 - Faez Ansari (xmaagency.com)
+  Literally just type web and then you'll find it. Yeah. All right. Cool. You know what I mean? Yeah, we'll do it.  All right. Thank you guys. Anything else to talk about?
+
+46:02 - ron dav
+  No, I think that's all good. All right. Once this is done, let us know, and then, yeah, nothing else.
+
+46:13 - Faez Ansari (xmaagency.com)
+  Bye, Raj. All right. Thank you very much.
+
+46:17 - ron dav
+  Okay, bro. Take care. Bye. All right. Take care.
+
+46:19 - Faez Ansari (xmaagency.com)
+  Goodbye. Bye.

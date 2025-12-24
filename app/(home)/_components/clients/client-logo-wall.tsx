@@ -4,17 +4,20 @@ import { motion } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { MarqueeLogoCard } from "./client-logo-card";
-import { clients } from "@/data/clients";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 import {
   ScrollVelocityContainer,
   ScrollVelocityRow,
 } from "@/components/ui/scroll-velocity";
+import type { ClientItem } from "@/lib/sanity/types";
 
-const firstRowClients = clients.slice(0, Math.ceil(clients.length / 2));
-const secondRowClients = clients.slice(Math.ceil(clients.length / 2));
+interface ClientLogoWallProps {
+  clients: ClientItem[];
+}
 
-export function ClientLogoWall() {
+export function ClientLogoWall({ clients }: ClientLogoWallProps) {
+  const firstRowClients = clients.slice(0, Math.ceil(clients.length / 2));
+  const secondRowClients = clients.slice(Math.ceil(clients.length / 2));
   return (
     <Section id="clients" background="muted">
       <Container>

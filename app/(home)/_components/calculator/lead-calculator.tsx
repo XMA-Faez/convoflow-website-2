@@ -16,6 +16,11 @@ import { Button } from "@/components/primitives";
 import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from "@/lib/animations";
+import type { CalculatorContent } from "@/lib/sanity/types";
+
+interface LeadCalculatorProps {
+  content: CalculatorContent | null;
+}
 
 const sanitizeNumericInput = (
   value: number,
@@ -66,7 +71,7 @@ interface ROIResults {
   leadsRecovered: number;
 }
 
-const ROICalculator: React.FC = () => {
+function LeadCostCalculator({ content }: LeadCalculatorProps) {
   const [metrics, setMetrics] = useState<ROIMetrics>({
     currentLeads: 50,
     conversionRate: 15,
@@ -595,6 +600,6 @@ const ROICalculator: React.FC = () => {
       </Container>
     </Section>
   );
-};
+}
 
-export default ROICalculator;
+export default LeadCostCalculator;

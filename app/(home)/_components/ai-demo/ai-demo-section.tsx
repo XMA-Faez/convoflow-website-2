@@ -2,6 +2,11 @@
 
 import { motion } from "framer-motion";
 import { AIAssistantDemo } from "./ai-assistant-demo";
+import type { AIDemoContent } from "@/lib/sanity/types";
+
+interface AIDemoSectionProps {
+  content: AIDemoContent | null;
+}
 
 function DotGridBackground() {
   return (
@@ -26,7 +31,9 @@ function DotGridBackground() {
   );
 }
 
-export function AIDemoSection() {
+export function AIDemoSection({ content }: AIDemoSectionProps) {
+  if (!content) return null;
+
   return (
     <section className="relative py-20 md:py-28 px-4">
       <DotGridBackground />
@@ -39,13 +46,13 @@ export function AIDemoSection() {
           className="text-center mb-10 md:mb-14"
         >
           <span className="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-3">
-            See It In Action
+            {content.sectionLabel}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-neutral-900">
-            AI That Books While You Sleep
+            {content.title}
           </h2>
           <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-            Watch how our AI engages leads instantly, qualifies them through natural conversation, and books meetings — all without human intervention.
+            {content.description}
           </p>
         </motion.div>
 
@@ -66,7 +73,7 @@ export function AIDemoSection() {
           viewport={{ once: true }}
           className="text-center text-sm text-neutral-500 mt-6"
         >
-          This is a simulation. Real conversations are personalized to your business and industry.
+          {content.disclaimer}
         </motion.p>
       </div>
     </section>

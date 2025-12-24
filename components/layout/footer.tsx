@@ -1,7 +1,12 @@
 import Image from "next/image";
 import { Container } from "./container";
 import { Link } from "@/components/primitives";
-import { navLinks, whatsappUrl, contactInfo, socialLinks } from "@/data/navigation";
+import type { LayoutContent, NavigationContent } from "@/lib/sanity/types";
+
+interface FooterProps {
+  content?: LayoutContent["footer"] | null;
+  navigation?: NavigationContent | null;
+}
 
 function InstagramIcon() {
   return (
@@ -27,8 +32,15 @@ function TwitterIcon() {
   );
 }
 
-export function Footer() {
+export function Footer({ content, navigation }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const navLinks = navigation?.navLinks || [];
+  const contactInfo = navigation?.contactInfo;
+  const socialLinks = navigation?.socialLinks;
+  const whatsappNumber = navigation?.whatsappNumber;
+  const whatsappUrl = whatsappNumber
+    ? `https://wa.me/${whatsappNumber.replace(/\D/g, "")}`
+    : null;
 
   return (
     <footer className="bg-neutral-50 border-t border-neutral-200 text-neutral-600 py-12">
@@ -43,64 +55,80 @@ export function Footer() {
               className="h-10 w-auto"
             />
             <p className="text-sm text-neutral-500 text-center md:text-left">
-              AI-powered lead qualification and booking automation.
+              {content?.tagline || "AI-powered lead qualification and booking automation."}
             </p>
-            <div className="flex gap-4">
-              <a
-                href={socialLinks.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-neutral-900 transition-colors"
-                aria-label="Instagram"
-              >
-                <InstagramIcon />
-              </a>
-              <a
-                href={socialLinks.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-neutral-900 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <LinkedInIcon />
-              </a>
-              <a
-                href={socialLinks.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-neutral-900 transition-colors"
-                aria-label="Twitter"
-              >
-                <TwitterIcon />
-              </a>
-            </div>
+            {socialLinks && (
+              <div className="flex gap-4">
+                {socialLinks.instagram && (
+                  <a
+                    href={socialLinks.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral-400 hover:text-neutral-900 transition-colors"
+                    aria-label="Instagram"
+                  >
+                    <InstagramIcon />
+                  </a>
+                )}
+                {socialLinks.linkedin && (
+                  <a
+                    href={socialLinks.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral-400 hover:text-neutral-900 transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <LinkedInIcon />
+                  </a>
+                )}
+                {socialLinks.twitter && (
+                  <a
+                    href={socialLinks.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral-400 hover:text-neutral-900 transition-colors"
+                    aria-label="Twitter"
+                  >
+                    <TwitterIcon />
+                  </a>
+                )}
+              </div>
+            )}
           </div>
 
-          <div className="flex flex-col items-center md:items-start gap-3">
-            <h4 className="font-semibold text-neutral-800">Contact</h4>
-            <div className="flex flex-col gap-2 text-sm text-neutral-500">
-              <a
-                href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
-                className="hover:text-neutral-900 transition-colors"
-              >
-                {contactInfo.phone}
-              </a>
-              <a
-                href={`mailto:${contactInfo.email}`}
-                className="hover:text-neutral-900 transition-colors"
-              >
-                {contactInfo.email}
-              </a>
+          {contactInfo && (
+            <div className="flex flex-col items-center md:items-start gap-3">
+              <h4 className="font-semibold text-neutral-800">
+                {content?.contactSectionTitle || "Contact"}
+              </h4>
+              <div className="flex flex-col gap-2 text-sm text-neutral-500">
+                <a
+                  href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
+                  className="hover:text-neutral-900 transition-colors"
+                >
+                  {contactInfo.phone}
+                </a>
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  className="hover:text-neutral-900 transition-colors"
+                >
+                  {contactInfo.email}
+                </a>
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className="flex flex-col items-center md:items-start gap-3">
-            <h4 className="font-semibold text-neutral-800">Location</h4>
-            <div className="text-sm text-neutral-500 text-center md:text-left">
-              <p>{contactInfo.address.line1}</p>
-              <p>{contactInfo.address.line2}</p>
+          {contactInfo?.address && (
+            <div className="flex flex-col items-center md:items-start gap-3">
+              <h4 className="font-semibold text-neutral-800">
+                {content?.locationSectionTitle || "Location"}
+              </h4>
+              <div className="text-sm text-neutral-500 text-center md:text-left">
+                <p>{contactInfo.address.line1}</p>
+                <p>{contactInfo.address.line2}</p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <div className="mt-10 pt-8 border-t border-neutral-200 flex flex-col md:flex-row justify-between items-center gap-4">
@@ -116,7 +144,7 @@ export function Footer() {
                 {link.label}
               </Link>
             ))}
-            {whatsappUrl !== "#" && (
+            {whatsappUrl && (
               <Link
                 href={whatsappUrl}
                 external
@@ -124,12 +152,12 @@ export function Footer() {
                 size="sm"
                 className="text-neutral-500 hover:text-neutral-900"
               >
-                WhatsApp
+                {content?.whatsappLinkText || "WhatsApp"}
               </Link>
             )}
           </nav>
           <p className="text-sm text-neutral-400">
-            &copy; {currentYear} BookedByAI. All rights reserved.
+            &copy; {currentYear} {content?.copyrightText || "BookedByAI. All rights reserved."}
           </p>
         </div>
       </Container>

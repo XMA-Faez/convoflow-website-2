@@ -4,24 +4,25 @@ import { HeroSection } from "./_components/hero/hero-section";
 import { AIDemoSection } from "./_components/ai-demo";
 import { ClientLogoWall } from "./_components/clients";
 import { ProcessSection } from "./_components/process/process-section";
-import { TestimonialsSection } from "./_components/testimonials/testimonials-section";
 import { ContactSection } from "./_components/contact/contact-section";
 import LeadCostCalculator from "./_components/calculator/lead-calculator";
+import { getAllContent } from "@/lib/sanity";
 
-export default function Home() {
+export default async function Home() {
+  const content = await getAllContent();
+
   return (
     <>
-      <Header />
+      <Header content={content.layout?.header} navigation={content.navigation} />
       <main>
-        <HeroSection />
-        <AIDemoSection />
-        <ClientLogoWall />
-        <ProcessSection />
-        <LeadCostCalculator />
-        {/* <TestimonialsSection /> */}
-        <ContactSection />
+        <HeroSection content={content.hero} whatsappNumber={content.navigation?.whatsappNumber} />
+        <AIDemoSection content={content.aiDemo} />
+        <ClientLogoWall clients={content.clients} />
+        <ProcessSection content={content.process} />
+        <LeadCostCalculator content={content.calculator} />
+        <ContactSection content={content.contact} whatsappNumber={content.navigation?.whatsappNumber} />
       </main>
-      <Footer />
+      <Footer content={content.layout?.footer} navigation={content.navigation} />
     </>
   );
 }

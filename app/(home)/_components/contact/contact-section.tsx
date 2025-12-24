@@ -6,9 +6,20 @@ import { Section } from "@/components/layout/section";
 import { Card, Link } from "@/components/primitives";
 import { ContactForm } from "./contact-form";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
-import { whatsappUrl } from "@/data/navigation";
+import type { ContactContent } from "@/lib/sanity/types";
 
-export function ContactSection() {
+interface ContactSectionProps {
+  content: ContactContent | null;
+  whatsappNumber?: string;
+}
+
+export function ContactSection({ content, whatsappNumber }: ContactSectionProps) {
+  const whatsappUrl = whatsappNumber
+    ? `https://wa.me/${whatsappNumber.replace(/\D/g, "")}`
+    : null;
+
+  if (!content) return null;
+
   return (
     <Section id="contact" background="primary" className="relative">
       <div
@@ -21,10 +32,10 @@ export function ContactSection() {
               radial-gradient(circle 600px at 100% 200px, oklch(0.816 0.112 356.06 / 0.2), transparent)
 `,
           backgroundSize: `
-              96px 64px,    
-              96px 64px,    
-              100% 100%,    
-              100% 100%  
+              96px 64px,
+              96px 64px,
+              100% 100%,
+              100% 100%
 `,
         }}
       />
@@ -41,14 +52,13 @@ export function ContactSection() {
             variants={fadeInUp}
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900"
           >
-            Stop Losing Leads. Start Today.
+            {content.title}
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             className="mt-4 text-lg text-neutral-600 max-w-xl mx-auto"
           >
-            Book your free 30-minute audit call and discover how much revenue
-            you&apos;re leaving on the table.
+            {content.description}
           </motion.p>
         </motion.div>
 
@@ -59,11 +69,11 @@ export function ContactSection() {
           variants={fadeInUp}
         >
           <Card variant="elevated" padding="lg" className="max-w-2xl mx-auto">
-            <ContactForm />
+            <ContactForm content={content} />
           </Card>
         </motion.div>
 
-        {whatsappUrl !== "#" && (
+        {whatsappUrl && content.whatsappLabel && (
           <motion.p
             initial="hidden"
             whileInView="visible"
@@ -71,9 +81,9 @@ export function ContactSection() {
             variants={fadeInUp}
             className="text-center mt-8 text-neutral-600"
           >
-            Prefer WhatsApp?{" "}
+            {content.whatsappLabel}{" "}
             <Link href={whatsappUrl} variant="underline">
-              We can start there
+              {content.whatsappLinkText}
             </Link>
             .
           </motion.p>

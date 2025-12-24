@@ -3,7 +3,12 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { ButtonLink } from "@/components/primitives";
-import { processSteps } from "@/data/process-steps";
+import type { ProcessContent } from "@/lib/sanity/types";
+import { getIcon } from "@/lib/icon-map";
+
+interface ProcessSectionProps {
+  content: ProcessContent | null;
+}
 
 const GRADIENT_VARIANT = 1 as 1 | 2 | 3;
 
@@ -40,8 +45,10 @@ function DotGridBackground() {
   );
 }
 
-export function ProcessSection() {
+export function ProcessSection({ content }: ProcessSectionProps) {
   const [activeStep, setActiveStep] = useState<number | null>(null);
+
+  if (!content) return null;
 
   return (
     <section id="how-we-work" className="relative py-24 px-4 overflow-x-hidden">
@@ -55,13 +62,13 @@ export function ProcessSection() {
           className="text-center mb-16"
         >
           <span className="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-3">
-            How We Work
+            {content.sectionLabel}
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-neutral-900">
-            Your BookedByAI System, Installed in 7 Days
+            {content.title}
           </h2>
           <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
-            From first call to an AI engine that turns cold leads into qualified conversations on autopilot.
+            {content.description}
           </p>
         </motion.div>
 
@@ -69,8 +76,8 @@ export function ProcessSection() {
           <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-transparent via-primary-400 to-transparent hidden lg:block" />
 
           <div className="space-y-4 lg:space-y-0">
-            {processSteps.map((step, index) => {
-              const Icon = step.icon;
+            {content.steps.map((step, index) => {
+              const Icon = getIcon(step.iconName);
 
               return (
                 <motion.div
@@ -170,11 +177,11 @@ export function ProcessSection() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <p className="text-lg text-neutral-600 mb-6">
-            Ready to start your journey with us?
-          </p>
+          {content.ctaLabel && (
+            <p className="text-lg text-neutral-600 mb-6">{content.ctaLabel}</p>
+          )}
           <ButtonLink href="#contact" size="lg" rounded="pill">
-            Book Your Demo Now
+            {content.ctaText}
           </ButtonLink>
         </motion.div>
       </div>

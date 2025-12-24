@@ -4,19 +4,22 @@ import { motion } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { Button, Link } from "@/components/primitives";
 import { FlowDiagram } from "./flow-diagram";
-import {
-  HighlightMarker,
-  HighlightBox,
-  HighlightGradient,
-  HighlightSVG,
-} from "./highlights";
+import { HighlightSVG } from "./highlights";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import type { HeroContent } from "@/lib/sanity/types";
 
-import { whatsappUrl } from "@/data/navigation";
+interface HeroSectionProps {
+  content: HeroContent | null;
+  whatsappNumber?: string;
+}
 
 const Highlight = HighlightSVG;
 
-export function HeroSection() {
+export function HeroSection({ content, whatsappNumber }: HeroSectionProps) {
+  const whatsappUrl = whatsappNumber
+    ? `https://wa.me/${whatsappNumber.replace(/\D/g, "")}`
+    : null;
+
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
     if (element) {
@@ -26,6 +29,8 @@ export function HeroSection() {
       window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
   };
+
+  if (!content) return null;
 
   return (
     <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-transparent">
@@ -39,10 +44,10 @@ export function HeroSection() {
               radial-gradient(circle 600px at 100% 200px, oklch(0.816 0.112 356.06 / 0.3), transparent)
 `,
           backgroundSize: `
-              96px 64px,    
-              96px 64px,    
-              100% 100%,    
-              100% 100%  
+              96px 64px,
+              96px 64px,
+              100% 100%,
+              100% 100%
 `,
         }}
       />
@@ -58,17 +63,14 @@ export function HeroSection() {
             variants={fadeInUp}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight"
           >
-            Turn Leads Into Booked Calls{" "}
-            <Highlight>Without Lifting a Finger</Highlight>
+            {content.headline} <Highlight>{content.headlineHighlight}</Highlight>
           </motion.h1>
 
           <motion.p
             variants={fadeInUp}
             className="mt-6 text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto"
           >
-            We build and run your entire acquisition system to double qualified
-            conversations from leads you already generate without increasing
-            ad spend.
+            {content.subheading}
           </motion.p>
 
           <motion.div
@@ -76,13 +78,13 @@ export function HeroSection() {
             className="mt-10 flex flex-col items-center gap-4"
           >
             <Button size="lg" onClick={scrollToContact}>
-              Book a 30 Min Audit Call
+              {content.ctaText}
             </Button>
-            {whatsappUrl !== "#" && (
+            {whatsappUrl && content.whatsappLabel && (
               <p className="text-sm text-neutral-500">
-                Prefer WhatsApp?{" "}
+                {content.whatsappLabel}{" "}
                 <Link href={whatsappUrl} variant="underline" size="sm">
-                  We can start there
+                  {content.whatsappLinkText}
                 </Link>
                 .
               </p>
@@ -93,13 +95,14 @@ export function HeroSection() {
             <FlowDiagram />
           </motion.div>
 
-          <motion.p
-            variants={fadeInUp}
-            className="mt-8 text-base text-neutral-500 italic"
-          >
-            Perfect for real estate, automotive, private aviation, plastic
-            surgery clinics, spas, and any business that runs on leads.
-          </motion.p>
+          {content.industriesTagline && (
+            <motion.p
+              variants={fadeInUp}
+              className="mt-8 text-base text-neutral-500 italic"
+            >
+              {content.industriesTagline}
+            </motion.p>
+          )}
         </motion.div>
       </Container>
     </section>

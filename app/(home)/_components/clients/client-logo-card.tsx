@@ -3,16 +3,23 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Client } from "@/data/clients";
 import { scaleIn } from "@/lib/animations";
+import type { ClientItem } from "@/lib/sanity/types";
+import { urlFor } from "@/lib/sanity/image";
 
 interface ClientLogoCardProps {
-  client: Client;
+  client: ClientItem;
   index: number;
 }
 
 interface MarqueeLogoCardProps {
-  client: Client;
+  client: ClientItem;
+}
+
+function getLogoUrl(client: ClientItem): string | null {
+  if (client.logoUrl) return client.logoUrl;
+  if (client.logo) return urlFor(client.logo).width(180).url();
+  return null;
 }
 
 function getInitials(name: string): string {
@@ -26,23 +33,23 @@ function getInitials(name: string): string {
 
 export function MarqueeLogoCard({ client }: MarqueeLogoCardProps) {
   const [imageError, setImageError] = useState(false);
+  const logoUrl = getLogoUrl(client);
 
   return (
     <a
-      href={client.website}
+      href={client.website || "#"}
       target="_blank"
       rel="noopener noreferrer"
       className="group flex-shrink-0 mx-3 sm:mx-4 w-36 sm:w-44 h-20 sm:h-24 bg-white rounded-xl border border-neutral-200
                  flex items-center justify-center px-4 py-3
                  hover:border-primary-300 hover:shadow-lg
-                 transition-[border-color,box-shadow] duration-300
-"
+                 transition-[border-color,box-shadow] duration-300"
       aria-label={`Visit ${client.name} website`}
     >
-      {!imageError ? (
+      {logoUrl && !imageError ? (
         <div className="relative w-full h-full">
           <Image
-            src={client.logo}
+            src={logoUrl}
             alt={`${client.name} logo`}
             fill
             sizes="180px"
@@ -62,10 +69,11 @@ export function MarqueeLogoCard({ client }: MarqueeLogoCardProps) {
 export function ClientLogoCard({ client, index }: ClientLogoCardProps) {
   const [imageError, setImageError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const logoUrl = getLogoUrl(client);
 
   return (
     <motion.a
-      href={client.website}
+      href={client.website || "#"}
       target="_blank"
       rel="noopener noreferrer"
       variants={scaleIn}
@@ -76,15 +84,15 @@ export function ClientLogoCard({ client, index }: ClientLogoCardProps) {
                  transition-[border-color,box-shadow] duration-300 cursor-pointer"
       aria-label={`Visit ${client.name} website`}
     >
-      {!isLoaded && !imageError && (
+      {!isLoaded && !imageError && logoUrl && (
         <div className="absolute inset-3 sm:inset-4 bg-neutral-100 animate-pulse rounded-lg" />
       )}
 
       <div className="flex flex-col items-center gap-2 sm:gap-3 w-full h-full">
-        {!imageError ? (
+        {logoUrl && !imageError ? (
           <div className="relative w-full flex-1 min-h-[60px] sm:min-h-0">
             <Image
-              src={client.logo}
+              src={logoUrl}
               alt={`${client.name} logo`}
               fill
               sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 22vw"

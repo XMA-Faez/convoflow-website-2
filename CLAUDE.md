@@ -41,9 +41,23 @@ components/
 
 lib/
 ├── utils.ts              # cn() utility (clsx + tailwind-merge)
-└── animations.ts         # Framer Motion variant presets
+├── animations.ts         # Framer Motion variant presets
+├── icon-map.ts           # Lucide icon name to component mapping
+└── sanity/               # Sanity CMS integration
+    ├── client.ts         # Sanity client
+    ├── queries.ts        # GROQ queries
+    ├── fetch.ts          # Data fetching with fallbacks
+    ├── types.ts          # TypeScript types
+    └── fallback.ts       # Default content
 
-data/                     # Static data (navigation, clients, testimonials)
+sanity/
+├── sanity.config.ts      # Sanity configuration
+├── env.ts                # Environment variables
+└── schemaTypes/          # Content schemas
+
+app/studio/               # Sanity Studio (embedded)
+
+data/                     # Static data (country codes, etc.)
 ```
 
 ### Component Pattern
@@ -107,3 +121,25 @@ The theme is defined in `app/globals.css` using Tailwind v4's @theme syntax:
 ```
 
 See `docs/design-system.md` for full token documentation.
+
+## Content Management (Sanity CMS)
+
+Content is managed via Sanity CMS with an embedded studio at `/studio`.
+
+### Data Flow
+1. Content is fetched from Sanity at build time (static generation)
+2. Falls back to `lib/sanity/fallback.ts` when Sanity is empty
+3. Components receive content as props from page.tsx
+
+### Key Files
+- `lib/sanity/fetch.ts` - Data fetching utilities
+- `lib/sanity/queries.ts` - GROQ queries
+- `sanity/schemaTypes/` - Content schemas
+
+### Environment Variables
+```
+NEXT_PUBLIC_SANITY_PROJECT_ID=8iy7ioai
+NEXT_PUBLIC_SANITY_DATASET=production
+```
+
+See `docs/cms.md` for detailed CMS documentation.
