@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BookedByAI - AI-Powered Lead Qualification & Booking",
+  title: "ConvoFlow - AI-Powered Lead Qualification & Booking",
   description:
-    "The BookedByAI Growth Engine builds and runs your entire acquisition system, engineered to double the number of qualified conversations you get from the leads you already generate.",
+    "The ConvoFlow Growth Engine builds and runs your entire acquisition system, engineered to double the number of qualified conversations you get from the leads you already generate.",
   keywords: [
     "AI sales",
     "lead qualification",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "lead nurturing",
   ],
   openGraph: {
-    title: "BookedByAI - AI-Powered Lead Qualification & Booking",
+    title: "ConvoFlow - AI-Powered Lead Qualification & Booking",
     description:
       "Double your qualified conversations without increasing ad spend.",
     type: "website",
