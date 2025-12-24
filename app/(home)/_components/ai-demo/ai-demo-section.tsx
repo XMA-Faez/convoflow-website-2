@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { usePresentationQuery } from "next-sanity/hooks";
 import { AIAssistantDemo } from "./ai-assistant-demo";
+import { aiDemoPresentationQuery } from "@/lib/sanity/queries";
 import type { AIDemoContent } from "@/lib/sanity/types";
 
 interface AIDemoSectionProps {

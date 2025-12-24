@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
 import "./globals.css";
 import { SignupPopup } from "@/components/signup-popup";
+import { DisableDraftMode } from "@/components/disable-draft-mode";
+import { SanityLive } from "@/lib/sanity/live";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,11 +37,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isDraftMode = (await draftMode()).isEnabled;
+
   return (
     <html lang="en">
       <body
@@ -45,6 +51,13 @@ export default function RootLayout({
       >
         {children}
         <SignupPopup />
+        <SanityLive />
+        {isDraftMode && (
+          <>
+            <DisableDraftMode />
+            <VisualEditing />
+          </>
+        )}
       </body>
     </html>
   );

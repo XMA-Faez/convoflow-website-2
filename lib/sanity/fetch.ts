@@ -1,4 +1,4 @@
-import { client } from "./client";
+import { sanityFetch } from "./live";
 import {
   heroQuery,
   aiDemoQuery,
@@ -29,8 +29,8 @@ async function fetchWithFallback<T>(
   fallback: T
 ): Promise<T> {
   try {
-    const result = await client.fetch<T>(query, {}, { next: { revalidate: 60 } });
-    return result ?? fallback;
+    const { data } = await sanityFetch({ query });
+    return data ?? fallback;
   } catch (error) {
     console.warn("Sanity fetch failed, using fallback:", error);
     return fallback;

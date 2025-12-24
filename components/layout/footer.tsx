@@ -157,7 +157,7 @@ export function Footer({ content, navigation }: FooterProps) {
             )}
           </nav>
           <p className="text-sm text-neutral-400">
-            &copy; {currentYear} {content?.copyrightText || "BookedByAI. All rights reserved."}
+            &copy; {currentYear} {content?.copyrightText || "ConvoFlow. All rights reserved."}
           </p>
         </div>
       </Container>

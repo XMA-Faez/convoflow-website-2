@@ -22,6 +22,50 @@ interface LeadCalculatorProps {
   content: CalculatorContent | null;
 }
 
+const defaults = {
+  sectionTitle: "Calculate Your",
+  titleHighlight: "Revenue Impact",
+  description: "See exactly how much additional revenue our system could generate for your UAE business",
+  inputsHeading: "Your Current Metrics",
+  resultsHeading: "Your ROI Projection",
+  inputFields: {
+    leads: { label: "Leads per Month", suffix: "leads", tooltip: "Average number of leads you receive monthly" },
+    conversionRate: { label: "Current Conversion Rate", suffix: "%", tooltip: "Percentage of leads that become paying customers" },
+    averageValue: { label: "Average Customer Value", suffix: "AED", tooltip: "Average revenue per customer or project" },
+    responseTime: { label: "Average Response Time", suffix: "hours", tooltip: "How long it takes to respond to new leads" },
+  },
+  resultLabels: {
+    additionalRevenue: "Additional Monthly Revenue",
+    annualSuffix: "/ year",
+    leadsRecovered: "Leads Recovered",
+    timeSaved: "Time Saved",
+    revenueComparison: "Revenue Comparison",
+    currentRevenue: "Current Revenue",
+    withOurSystem: "With Our System",
+    increase: "Increase",
+  },
+  placeholderText: 'Adjust your metrics and click "Calculate My ROI" to see your potential revenue increase',
+  calculateButtonText: "Calculate My ROI",
+  calculatingText: "Calculating ROI...",
+  showDetailsText: "Show calculation details",
+  hideDetailsText: "Hide calculation details",
+  assumptions: [
+    "60% improvement in conversion rate with AI chatbot",
+    "15-25% more leads captured with faster response times",
+    "50% reduction in manual response time",
+    "Based on industry averages for UAE service businesses",
+  ],
+  ctaText: "Get Started Now",
+  validationErrors: {
+    leadCount: "Lead count must be between 5 and 500",
+    conversionRate: "Conversion rate must be between 5% and 50%",
+    averageValue: "Average value must be between 100 and 10,000 AED",
+    responseTime: "Response time must be between 0.5 and 24 hours",
+    genericError: "An error occurred during calculation. Please try again.",
+    fixIssues: "Please fix the following issues:",
+  },
+};
+
 const sanitizeNumericInput = (
   value: number,
   min: number,
@@ -29,30 +73,6 @@ const sanitizeNumericInput = (
 ): number => {
   if (isNaN(value) || !isFinite(value)) return min;
   return Math.max(min, Math.min(max, value));
-};
-
-const validateROIMetrics = (
-  metrics: ROIMetrics
-): { isValid: boolean; errors: string[] } => {
-  const errors: string[] = [];
-
-  if (metrics.currentLeads < 5 || metrics.currentLeads > 500) {
-    errors.push("Lead count must be between 5 and 500");
-  }
-
-  if (metrics.conversionRate < 5 || metrics.conversionRate > 50) {
-    errors.push("Conversion rate must be between 5% and 50%");
-  }
-
-  if (metrics.averageValue < 100 || metrics.averageValue > 10000) {
-    errors.push("Average value must be between 100 and 10,000 AED");
-  }
-
-  if (metrics.responseTime < 0.5 || metrics.responseTime > 24) {
-    errors.push("Response time must be between 0.5 and 24 hours");
-  }
-
-  return { isValid: errors.length === 0, errors };
 };
 
 interface ROIMetrics {
@@ -72,6 +92,12 @@ interface ROIResults {
 }
 
 function LeadCostCalculator({ content }: LeadCalculatorProps) {
+  const c = content || defaults;
+  const inputFields = c.inputFields || defaults.inputFields;
+  const resultLabels = c.resultLabels || defaults.resultLabels;
+  const validationErrors = c.validationErrors || defaults.validationErrors;
+  const assumptions = c.assumptions || defaults.assumptions;
+
   const [metrics, setMetrics] = useState<ROIMetrics>({
     currentLeads: 50,
     conversionRate: 15,
@@ -82,17 +108,42 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
   const [results, setResults] = useState<ROIResults | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
-  const [validationErrors, setValidationErrors] = useState<string[]>([]);
+  const [errors, setErrors] = useState<string[]>([]);
 
-  const validation = useMemo(() => validateROIMetrics(metrics), [metrics]);
+  const validateROIMetrics = useCallback(
+    (m: ROIMetrics): { isValid: boolean; errors: string[] } => {
+      const errs: string[] = [];
+
+      if (m.currentLeads < 5 || m.currentLeads > 500) {
+        errs.push(validationErrors.leadCount);
+      }
+
+      if (m.conversionRate < 5 || m.conversionRate > 50) {
+        errs.push(validationErrors.conversionRate);
+      }
+
+      if (m.averageValue < 100 || m.averageValue > 10000) {
+        errs.push(validationErrors.averageValue);
+      }
+
+      if (m.responseTime < 0.5 || m.responseTime > 24) {
+        errs.push(validationErrors.responseTime);
+      }
+
+      return { isValid: errs.length === 0, errors: errs };
+    },
+    [validationErrors]
+  );
+
+  const validation = useMemo(() => validateROIMetrics(metrics), [metrics, validateROIMetrics]);
 
   const calculateROI = useCallback(() => {
     if (!validation.isValid) {
-      setValidationErrors(validation.errors);
+      setErrors(validation.errors);
       return;
     }
 
-    setValidationErrors([]);
+    setErrors([]);
     setIsCalculating(true);
 
     setTimeout(() => {
@@ -144,20 +195,18 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
         });
       } catch (error) {
         console.error("ROI calculation error:", error);
-        setValidationErrors([
-          "An error occurred during calculation. Please try again.",
-        ]);
+        setErrors([validationErrors.genericError]);
       } finally {
         setIsCalculating(false);
       }
     }, 1500);
-  }, [metrics, validation]);
+  }, [metrics, validation, validationErrors.genericError]);
 
   const handleInputChange = useCallback(
     (field: keyof ROIMetrics, value: number) => {
       setMetrics((prev) => ({ ...prev, [field]: value }));
       setResults(null);
-      setValidationErrors([]);
+      setErrors([]);
     },
     []
   );
@@ -171,46 +220,38 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
     }).format(amount);
   };
 
-  const inputFields = [
+  const fieldConfigs = [
     {
-      label: "Leads per Month",
-      field: "currentLeads" as keyof ROIMetrics,
+      key: "currentLeads" as keyof ROIMetrics,
+      config: inputFields.leads,
       min: 5,
       max: 500,
       step: 5,
-      suffix: "leads",
       icon: <Users className="w-4 h-4" />,
-      tooltip: "Average number of leads you receive monthly",
     },
     {
-      label: "Current Conversion Rate",
-      field: "conversionRate" as keyof ROIMetrics,
+      key: "conversionRate" as keyof ROIMetrics,
+      config: inputFields.conversionRate,
       min: 5,
       max: 50,
       step: 1,
-      suffix: "%",
       icon: <TrendingUp className="w-4 h-4" />,
-      tooltip: "Percentage of leads that become paying customers",
     },
     {
-      label: "Average Customer Value",
-      field: "averageValue" as keyof ROIMetrics,
+      key: "averageValue" as keyof ROIMetrics,
+      config: inputFields.averageValue,
       min: 100,
       max: 10000,
       step: 50,
-      suffix: "AED",
       icon: <DollarSign className="w-4 h-4" />,
-      tooltip: "Average revenue per customer or project",
     },
     {
-      label: "Average Response Time",
-      field: "responseTime" as keyof ROIMetrics,
+      key: "responseTime" as keyof ROIMetrics,
+      config: inputFields.responseTime,
       min: 0.5,
       max: 24,
       step: 0.5,
-      suffix: "hours",
       icon: <MessageCircle className="w-4 h-4" />,
-      tooltip: "How long it takes to respond to new leads",
     },
   ];
 
@@ -228,15 +269,16 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
             variants={fadeInUp}
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-neutral-900"
           >
-            Calculate Your
-            <span className="text-primary-500"> Revenue Impact</span>
+            {c.sectionTitle || defaults.sectionTitle}
+            {(c.titleHighlight || defaults.titleHighlight) && (
+              <span className="text-primary-500"> {c.titleHighlight || defaults.titleHighlight}</span>
+            )}
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             className="text-lg text-neutral-600 max-w-2xl mx-auto"
           >
-            See exactly how much additional revenue our system could generate for
-            your UAE business
+            {c.description || defaults.description}
           </motion.p>
         </motion.div>
 
@@ -252,10 +294,10 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
               className="text-2xl font-bold mb-6 text-neutral-900"
               id="roi-inputs-heading"
             >
-              Your Current Metrics
+              {c.inputsHeading || defaults.inputsHeading}
             </h3>
 
-            {validationErrors.length > 0 && (
+            {errors.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -266,20 +308,20 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                 <div className="flex items-center gap-2 mb-2">
                   <AlertTriangle className="w-5 h-5 text-error-600" />
                   <h4 className="text-error-600 font-semibold">
-                    Please fix the following issues:
+                    {validationErrors.fixIssues}
                   </h4>
                 </div>
                 <ul className="text-error-600 text-sm space-y-1">
-                  {validationErrors.map((error, index) => (
+                  {errors.map((error, index) => (
                     <li key={index}>• {error}</li>
                   ))}
                 </ul>
               </motion.div>
             )}
 
-            {inputFields.map((field, index) => (
+            {fieldConfigs.map((field, index) => (
               <motion.div
-                key={field.field}
+                key={field.key}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -292,16 +334,16 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                       {field.icon}
                     </span>
                     <label
-                      htmlFor={`roi-input-${field.field}`}
+                      htmlFor={`roi-input-${field.key}`}
                       className="font-medium text-neutral-700"
                     >
-                      {field.label}
+                      {field.config?.label || defaults.inputFields[field.key === "currentLeads" ? "leads" : field.key]?.label}
                     </label>
                     <div className="group relative">
                       <button
                         type="button"
                         className="text-neutral-500 hover:text-neutral-700 focus:outline-none focus:text-neutral-700"
-                        aria-label={`More information about ${field.label}`}
+                        aria-label={`More information about ${field.config?.label}`}
                       >
                         <Info className="w-4 h-4" />
                       </button>
@@ -309,7 +351,7 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                         className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-white border border-neutral-200 rounded-lg text-sm text-neutral-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 w-64 z-10 shadow-lg"
                         role="tooltip"
                       >
-                        {field.tooltip}
+                        {field.config?.tooltip}
                       </div>
                     </div>
                   </div>
@@ -317,40 +359,40 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                     className="text-neutral-900 font-bold"
                     aria-live="polite"
                   >
-                    {metrics[field.field]}
-                    {field.suffix}
+                    {metrics[field.key]}
+                    {field.config?.suffix}
                   </span>
                 </div>
 
                 <div className="relative">
                   <input
-                    id={`roi-input-${field.field}`}
+                    id={`roi-input-${field.key}`}
                     type="range"
                     min={field.min}
                     max={field.max}
                     step={field.step}
-                    value={metrics[field.field]}
+                    value={metrics[field.key]}
                     onChange={(e) =>
-                      handleInputChange(field.field, parseFloat(e.target.value))
+                      handleInputChange(field.key, parseFloat(e.target.value))
                     }
                     onKeyDown={(e) => {
                       if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
                         e.preventDefault();
                         const increment =
                           e.key === "ArrowRight" ? field.step : -field.step;
-                        const newValue = metrics[field.field] + increment;
-                        handleInputChange(field.field, newValue);
+                        const newValue = metrics[field.key] + increment;
+                        handleInputChange(field.key, newValue);
                       }
                     }}
                     className="w-full h-2 rounded-lg appearance-none cursor-pointer slider focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white roi-slider"
-                    aria-describedby={`roi-input-${field.field}-desc`}
+                    aria-describedby={`roi-input-${field.key}-desc`}
                     aria-valuemin={field.min}
                     aria-valuemax={field.max}
-                    aria-valuenow={metrics[field.field]}
-                    aria-valuetext={`${metrics[field.field]} ${field.suffix}`}
+                    aria-valuenow={metrics[field.key]}
+                    aria-valuetext={`${metrics[field.key]} ${field.config?.suffix}`}
                     style={
                       {
-                        "--progress": `${((metrics[field.field] - field.min) / (field.max - field.min)) * 100}%`,
+                        "--progress": `${((metrics[field.key] - field.min) / (field.max - field.min)) * 100}%`,
                       } as React.CSSProperties
                     }
                   />
@@ -416,18 +458,18 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                 fullWidth
                 size="lg"
                 aria-describedby={
-                  validationErrors.length > 0 ? "validation-errors" : undefined
+                  errors.length > 0 ? "validation-errors" : undefined
                 }
               >
                 {isCalculating ? (
                   <div className="flex items-center gap-2">
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    Calculating ROI...
+                    {c.calculatingText || defaults.calculatingText}
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">
                     <Calculator className="w-5 h-5" />
-                    Calculate My ROI
+                    {c.calculateButtonText || defaults.calculateButtonText}
                   </div>
                 )}
               </Button>
@@ -443,7 +485,7 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
           >
             <div className="lg:sticky lg:top-8">
               <h3 className="text-2xl font-bold mb-6 text-neutral-900">
-                Your ROI Projection
+                {c.resultsHeading || defaults.resultsHeading}
               </h3>
 
               <AnimatePresence mode="wait">
@@ -457,8 +499,7 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                   >
                     <Calculator className="w-16 h-16 text-neutral-400 mx-auto mb-4" />
                     <p className="text-neutral-500">
-                      Adjust your metrics and click &quot;Calculate My ROI&quot;
-                      to see your potential revenue increase
+                      {c.placeholderText || defaults.placeholderText}
                     </p>
                   </motion.div>
                 ) : (
@@ -475,10 +516,10 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                           {formatCurrency(results.additionalRevenue)}
                         </div>
                         <div className="text-neutral-600 mb-4">
-                          Additional Monthly Revenue
+                          {resultLabels.additionalRevenue}
                         </div>
                         <div className="text-2xl font-semibold text-success-600">
-                          {formatCurrency(results.annualIncrease)} / year
+                          {formatCurrency(results.annualIncrease)} {resultLabels.annualSuffix}
                         </div>
                       </div>
                     </div>
@@ -489,7 +530,7 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                           +{results.leadsRecovered}
                         </div>
                         <div className="text-sm text-neutral-500">
-                          Leads Recovered
+                          {resultLabels.leadsRecovered}
                         </div>
                       </div>
 
@@ -498,7 +539,7 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                           {Math.round(results.timesSaved)}h
                         </div>
                         <div className="text-sm text-neutral-500">
-                          Time Saved
+                          {resultLabels.timeSaved}
                         </div>
                       </div>
                     </div>
@@ -506,13 +547,13 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                     <div className="p-6 rounded-2xl bg-white border border-neutral-200">
                       <h4 className="font-semibold mb-4 flex items-center gap-2 text-neutral-900">
                         <TrendingUp className="w-5 h-5 text-primary-500" />
-                        Revenue Comparison
+                        {resultLabels.revenueComparison}
                       </h4>
 
                       <div className="space-y-3">
                         <div className="flex justify-between items-center">
                           <span className="text-neutral-500">
-                            Current Revenue
+                            {resultLabels.currentRevenue}
                           </span>
                           <span className="font-semibold text-neutral-900">
                             {formatCurrency(results.monthlyRevenue)}
@@ -520,7 +561,7 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                         </div>
                         <div className="flex justify-between items-center">
                           <span className="text-neutral-500">
-                            With Our System
+                            {resultLabels.withOurSystem}
                           </span>
                           <span className="font-semibold text-primary-500">
                             {formatCurrency(results.improvedRevenue)}
@@ -529,7 +570,7 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                         <div className="h-px bg-neutral-200 my-2" />
                         <div className="flex justify-between items-center text-lg">
                           <span className="text-success-600 font-semibold">
-                            Increase
+                            {resultLabels.increase}
                           </span>
                           <span className="font-bold text-success-600">
                             +
@@ -550,7 +591,9 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                         onClick={() => setShowDetails(!showDetails)}
                         className="text-primary-500 hover:text-primary-400 text-sm mb-4 flex items-center gap-1 mx-auto"
                       >
-                        {showDetails ? "Hide" : "Show"} calculation details
+                        {showDetails
+                          ? c.hideDetailsText || defaults.hideDetailsText
+                          : c.showDetailsText || defaults.showDetailsText}
                         <ArrowRight
                           className={`w-4 h-4 transition-transform ${showDetails ? "rotate-90" : ""}`}
                         />
@@ -567,26 +610,16 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                             <p className="mb-2">
                               <strong>Assumptions:</strong>
                             </p>
-                            <p>
-                              • 60% improvement in conversion rate with AI
-                              chatbot
-                            </p>
-                            <p>
-                              • 15-25% more leads captured with faster response
-                              times
-                            </p>
-                            <p>• 50% reduction in manual response time</p>
-                            <p>
-                              • Based on industry averages for UAE service
-                              businesses
-                            </p>
+                            {assumptions.map((assumption, index) => (
+                              <p key={index}>• {assumption}</p>
+                            ))}
                           </motion.div>
                         )}
                       </AnimatePresence>
 
                       <Button size="lg" fullWidth>
                         <div className="flex items-center gap-2">
-                          Get Started Now
+                          {c.ctaText || defaults.ctaText}
                           <ArrowRight className="w-5 h-5" />
                         </div>
                       </Button>

@@ -2,9 +2,11 @@
 
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
+import { presentationTool } from "sanity/presentation";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./sanity/schemaTypes";
 import { apiVersion, dataset, projectId } from "./sanity/env";
+import { resolve } from "./lib/sanity/resolve";
 
 const singletonTypes = new Set([
   "hero",
@@ -26,6 +28,14 @@ export default defineConfig({
   dataset,
   basePath: "/studio",
   plugins: [
+    presentationTool({
+      resolve,
+      previewUrl: {
+        previewMode: {
+          enable: "/api/draft-mode/enable",
+        },
+      },
+    }),
     structureTool({
       structure: (S) =>
         S.list()
