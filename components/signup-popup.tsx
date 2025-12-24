@@ -2,7 +2,7 @@
 
 import { useState, useEffect, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button, Input } from "@/components/primitives";
+import { Button, Input, PhoneInput } from "@/components/primitives";
 import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "signup_popup_shown";
@@ -45,6 +45,8 @@ export function SignupPopup() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [countdown, setCountdown] = useState(60);
+  const [isPhoneValid, setIsPhoneValid] = useState(false);
+  const [phoneValidationError, setPhoneValidationError] = useState<string>();
 
   useEffect(() => {
     const hasSeenPopup = sessionStorage.getItem(STORAGE_KEY);
@@ -68,11 +70,6 @@ export function SignupPopup() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isVisible]);
 
-  const validatePhone = (phone: string) => {
-    const phoneRegex = /^[\d\s\-+()]{8,}$/;
-    return phoneRegex.test(phone);
-  };
-
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
@@ -86,12 +83,21 @@ export function SignupPopup() {
 
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required";
-    } else if (!validatePhone(formData.phone)) {
-      newErrors.phone = "Please enter a valid phone number";
+    } else if (!isPhoneValid) {
+      newErrors.phone = phoneValidationError || "Please enter a valid phone number";
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  const handlePhoneChange = (fullNumber: string, isValid: boolean, validationError?: string) => {
+    setFormData((prev) => ({ ...prev, phone: fullNumber }));
+    setIsPhoneValid(isValid);
+    setPhoneValidationError(validationError);
+    if (errors.phone) {
+      setErrors((prev) => ({ ...prev, phone: undefined }));
+    }
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -275,13 +281,9 @@ export function SignupPopup() {
                       />
                     </div>
 
-                    <Input
-                      type="tel"
-                      placeholder="Phone number"
-                      value={formData.phone}
-                      onChange={(e) =>
-                        handleInputChange("phone", e.target.value)
-                      }
+                    <PhoneInput
+                      placeholder="50 123 4567"
+                      onChange={handlePhoneChange}
                       error={errors.phone}
                       disabled={isSubmitting}
                     />
