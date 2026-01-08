@@ -16,6 +16,7 @@ import { Button } from "@/components/primitives";
 import { Section } from "@/components/layout/section";
 import { Container } from "@/components/layout/container";
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from "@/lib/animations";
+import { useSignupPopup } from "@/lib/signup-popup-context";
 import type { CalculatorContent } from "@/lib/sanity/types";
 
 interface LeadCalculatorProps {
@@ -92,6 +93,7 @@ interface ROIResults {
 }
 
 function LeadCostCalculator({ content }: LeadCalculatorProps) {
+  const { openPopup } = useSignupPopup();
   const c = content || defaults;
   const inputFields = c.inputFields || defaults.inputFields;
   const resultLabels = c.resultLabels || defaults.resultLabels;
@@ -454,6 +456,7 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
             >
               <Button
                 onClick={calculateROI}
+                intent="secondary"
                 disabled={isCalculating || !validation.isValid}
                 fullWidth
                 size="lg"
@@ -617,7 +620,7 @@ function LeadCostCalculator({ content }: LeadCalculatorProps) {
                         )}
                       </AnimatePresence>
 
-                      <Button size="lg" fullWidth>
+                      <Button size="lg" fullWidth onClick={openPopup}>
                         <div className="flex items-center gap-2">
                           {c.ctaText || defaults.ctaText}
                           <ArrowRight className="w-5 h-5" />

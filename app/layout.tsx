@@ -4,6 +4,7 @@ import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
 import "./globals.css";
 import { SignupPopup } from "@/components/signup-popup";
+import { SignupPopupProvider } from "@/lib/signup-popup-context";
 import { DisableDraftMode } from "@/components/disable-draft-mode";
 import { SanityLive } from "@/lib/sanity/live";
 
@@ -49,8 +50,10 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
-        <SignupPopup />
+        <SignupPopupProvider>
+          {children}
+          <SignupPopup />
+        </SignupPopupProvider>
         <SanityLive />
         {isDraftMode && (
           <>

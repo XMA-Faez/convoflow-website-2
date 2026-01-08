@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button, Input, PhoneInput } from "@/components/primitives";
 import { cn } from "@/lib/utils";
 import { submitLead } from "@/lib/leads";
+import { useSignupPopup } from "@/lib/signup-popup-context";
 
 const STORAGE_KEY = "signup_popup_shown";
 const SCROLL_THRESHOLD = 0.3;
@@ -36,7 +37,7 @@ function CloseIcon({ className = "w-5 h-5" }: { className?: string }) {
 }
 
 export function SignupPopup() {
-  const [isVisible, setIsVisible] = useState(false);
+  const { isOpen, closePopup, openPopup } = useSignupPopup();
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -61,8 +62,8 @@ export function SignupPopup() {
       const scrollPercentage =
         scrollPosition / (documentHeight - viewportHeight);
 
-      if (scrollPercentage >= SCROLL_THRESHOLD && !isVisible) {
-        setIsVisible(true);
+      if (scrollPercentage >= SCROLL_THRESHOLD && !isOpen) {
+        openPopup();
         sessionStorage.setItem(STORAGE_KEY, "true");
         window.removeEventListener("scroll", handleScroll);
       }
@@ -70,7 +71,7 @@ export function SignupPopup() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isVisible]);
+  }, [isOpen, openPopup]);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -134,7 +135,7 @@ export function SignupPopup() {
       setCountdown((prev) => {
         if (prev <= 1) {
           clearInterval(countdownInterval);
-          setIsVisible(false);
+          closePopup();
           return 0;
         }
         return prev - 1;
@@ -142,10 +143,10 @@ export function SignupPopup() {
     }, 1000);
 
     return () => clearInterval(countdownInterval);
-  }, [isSuccess]);
+  }, [isSuccess, closePopup]);
 
   const handleClose = () => {
-    setIsVisible(false);
+    closePopup();
   };
 
   const handleBackdropClick = (e: React.MouseEvent) => {
@@ -164,7 +165,7 @@ export function SignupPopup() {
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {isOpen && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
