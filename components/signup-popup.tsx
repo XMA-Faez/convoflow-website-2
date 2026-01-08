@@ -4,6 +4,7 @@ import { useState, useEffect, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button, Input, PhoneInput } from "@/components/primitives";
 import { cn } from "@/lib/utils";
+import { submitLead } from "@/lib/leads";
 
 const STORAGE_KEY = "signup_popup_shown";
 const SCROLL_THRESHOLD = 0.3;
@@ -44,6 +45,7 @@ export function SignupPopup() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [countdown, setCountdown] = useState(60);
   const [isPhoneValid, setIsPhoneValid] = useState(false);
   const [phoneValidationError, setPhoneValidationError] = useState<string>();
@@ -106,12 +108,23 @@ export function SignupPopup() {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const result = await submitLead({
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      phone: formData.phone,
+      source: "popup",
+    });
 
     setIsSubmitting(false);
-    setIsSuccess(true);
-    setCountdown(60);
+
+    if (result.success) {
+      setIsSuccess(true);
+      setCountdown(60);
+    } else {
+      setSubmitError(result.error || "Something went wrong. Please try again.");
+    }
   };
 
   useEffect(() => {
@@ -287,6 +300,12 @@ export function SignupPopup() {
                       error={errors.phone}
                       disabled={isSubmitting}
                     />
+
+                    {submitError && (
+                      <div className="p-3 rounded-lg bg-error-50 border border-error-100">
+                        <p className="text-sm text-error-600 text-center">{submitError}</p>
+                      </div>
+                    )}
 
                     <Button type="submit" fullWidth disabled={isSubmitting}>
                       {isSubmitting ? (

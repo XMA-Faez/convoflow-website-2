@@ -4,6 +4,7 @@ import { useState, useEffect, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button, Input, PhoneInput } from "@/components/primitives";
 import { fadeInUp } from "@/lib/animations";
+import { submitLead } from "@/lib/leads";
 import type { ContactContent } from "@/lib/sanity/types";
 
 interface ContactFormProps {
@@ -22,9 +23,6 @@ interface FormErrors {
   lastName?: string;
   phone?: string;
 }
-
-const WEBHOOK_URL =
-  "https://services.leadconnectorhq.com/hooks/NiZDx1EdWj2vIGRJkg5Z/webhook-trigger/17746e45-e7dd-404d-acae-ec4d71d6f70c";
 
 
 export function ContactForm({ content }: ContactFormProps) {
@@ -91,31 +89,22 @@ export function ContactForm({ content }: ContactFormProps) {
     setIsSubmitting(true);
     setSubmitError(null);
 
-    try {
-      const response = await fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          phone: formData.phone,
-          language: formData.language,
-          communicationMode: "call",
-        }),
-      });
+    const result = await submitLead({
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      phone: formData.phone,
+      language: formData.language,
+      communicationMode: "call",
+      source: "contact-form",
+    });
 
-      if (!response.ok) {
-        throw new Error("Failed to submit form");
-      }
+    setIsSubmitting(false);
 
+    if (result.success) {
       setIsSuccess(true);
       setCountdown(60);
-    } catch {
+    } else {
       setSubmitError(content.form.errors.submitFailed);
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
